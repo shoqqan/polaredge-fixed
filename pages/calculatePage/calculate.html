@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Polaredge</title>
+  <script src="../../libs/gsap/gsap.min.js" defer></script>
+  <script src="../../libs/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="../../libs/gsap/ScrollSmoother.min.js" defer></script>
+  <script src="../../libs/swiper/swiper-bundle.min.js" defer></script>
+  <script src="../../js/app.js" defer></script>
+  <link rel="stylesheet" href="./calculate.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <header class="navbar">
+        <nav class="navbar__menu">
+          <div class="logo">Polaredge</div>
+          <ul class="navbar__list">
+            <li class="navbar__item"><a href="#what_is_that">Что это?</a></li>
+            <li class="navbar__item"><a href="#advantages">Преимущества</a></li>
+            <li class="navbar__item"><a href="#htw">Как это работает</a></li>
+            <li class="navbar__item"><a href="#news">Новости</a></li>
+          </ul>
+          <div class="lang">RU</div>
+          <div class="burger__menu"><img src="./img/burgermenu.svg" alt=""></div>
+        </nav>
+      </header>
+      <main>
+        <div class="hero">
+          <a href="../../index.html" class="hero__back_btn">
+            <img src="../../img/sr-longarrow-left.svg" alt="">
+            <span>Вернуться</span>
+          </a>
+          <div class="calculator__wrapper">
+            <h1 class="hero__title">Рассчитайте Ваш дом</h1>
+            <div class="calculator">
+              <div class="inputs">
+                <input type="text" id="temp" placeholder="0">
+                <input type="text" id="metres" placeholder="0 кв м2">
+              </div>
+              <div class="price">
+                <p class="price__subtitle">Вот столько это будет стоить</p>
+                <div class="price_value">~0 ₸</div>
+                <a class="price__btn" href="../../index.html#application">Оставить заявку</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="neseccary">
+          <p class="neseccary__subtitle">Тут нужное вам</p>
+          <p class="neseccary__title">Все детали для установки</p>
+          <div class="neseccary__blocks_wrapper">
+            <div class="definitions">
+              <div class="question question__active">
+                <div class="question__button_wrapper">
+                  <p class="question__p">Капилярные трубки</p>
+                  <button class="question__button">
+                    <img src="../../img/sr-arrow-down.svg" alt="">
+                  </button>
+                </div>
+                <div class="question__text">Капиллярная трубка холодильника (капиллярный трубопровод) — важнейшая деталь
+                  в
+                  устройстве холодильного агрегата. Она представляет собой прибор, предназначенный для передачи
+                  хладагента в
+                  испаритель. Капиллярная трубка является трубопроводом, создающим разницу в давлении между испарителем
+                  и
+                  конденсатором. Таким образом, становится возможной подача в испаритель именно такого количества
+                  хладагента, которое необходимо для эффективного охлаждения воздуха внутри камер. При остановках
+                  компрессора капиллярная трубка уравнивает давление в холодильнике, снижая нагрузку на электродвигатель
+                  и
+                  препятствуя его быстрому сгоранию.</div>
+              </div>
+              <div class="question">
+                <div class="question__button_wrapper">
+                  <p class="question__p">Капилярные Держатели</p>
+                  <button class="question__button">
+                    <img src="../../img/sr-arrow-down.svg" alt="">
+                  </button>
+                </div>
+                <div class="question__text">Цена зависит от формы и размера поверхности, на которую будет установлена
+                  система.
+                  Мы рассчитываем стоимость исходя из требований и условий наших клиентов.</div>
+              </div>
+              <div class="question">
+                <div class="question__button_wrapper">
+                  <p class="question__p">Капилярные Держатели</p>
+                  <button class="question__button">
+                    <img src="../../img/sr-arrow-down.svg" alt="">
+                  </button>
+                </div>
+                <div class="question__text">Цена зависит от формы и размера поверхности, на которую будет установлена
+                  система.
+                  Мы рассчитываем стоимость исходя из требований и условий наших клиентов.</div>
+              </div>
+              <div class="question">
+                <div class="question__button_wrapper">
+                  <p class="question__p">Капилярные Держатели</p>
+                  <button class="question__button">
+                    <img src="../../img/sr-arrow-down.svg" alt="">
+                  </button>
+                </div>
+                <div class="question__text">Цена зависит от формы и размера поверхности, на которую будет установлена
+                  система.
+                  Мы рассчитываем стоимость исходя из требований и условий наших клиентов.</div>
+              </div>
+              <div class="question">
+                <div class="question__button_wrapper">
+                  <p class="question__p">Капилярные Держатели</p>
+                  <button class="question__button">
+                    <img src="../../img/sr-arrow-down.svg" alt="">
+                  </button>
+                </div>
+                <div class="question__text">Цена зависит от формы и размера поверхности, на которую будет установлена
+                  система.
+                  Мы рассчитываем стоимость исходя из требований и условий наших клиентов.</div>
+              </div>
+
+            </div>
+            <div class="slider">
+              <div class="swiper">
+                <!-- Additional required wrapper -->
+
+                <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide">
+                    <div class="swiper-photo first_slide"></div>
+                    <p>Капилярные трубки</p>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="swiper-photo second_slide"></div>
+                    <p>Капилярные Держатели</p>
+                  </div>
+                </div>
+                <!-- If we need pagination -->
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-buttons">
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map">
+          <div class="map__top_block"></div>
+          <div style="position:relative;overflow:hidden;"><a
+              href="https://yandex.ru/maps/162/almaty/?utm_medium=mapframe&utm_source=maps"
+              style="color:#eee;font-size:12px;position:absolute;top:0px;">Алматы</a><a
+              href="https://yandex.ru/maps/162/almaty/house/Y08YfwVmSkIBQFppfX5wdnpnYw==/?ll=76.971917%2C43.240369&utm_medium=mapframe&utm_source=maps&z=12.08"
+              style="color:#eee;font-size:12px;position:absolute;top:14px;">Проспект Аль-Фараби, 71 —
+              Яндекс Карты</a><iframe class="map__frame"
+              src="https://yandex.ru/map-widget/v1/?ll=76.971917%2C43.240369&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0Njc2OTMyMzAzEkbSmtCw0LfQsNKb0YHRgtCw0L0sINCQ0LvQvNCw0YLRiywg05jQuy3QpNCw0YDQsNCx0Lgg0LTQsNKj0pPRi9C70YssIDcxIgoNTtqZQhXe3ixC&z=12.08"
+              width="100%" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer__info">
+          <div class="footer__logo">
+            <img src="../../img/logo2.svg" alt="">
+            <div class="footer__adress">
+              Алматы, Казахстан <br>
+              ул. Аль-Фараби 71
+            </div>
+          </div>
+          <div class="footer__list">
+            <div class="list__title">Компания</div>
+            <ul>
+              <li><a href="../../index.html#what_is_that">Что это?</a> </li>
+              <li><a href="../../index.html#advantages">Преимущества</a></li>
+              <li><a href="../../index.html#htw">Как это работает</a></li>
+              <li><a href="../../index.html#news">Новости</a></li>
+            </ul>
+          </div>
+          <div class="footer__list">
+            <div class="list__title">Застроищикам</div>
+            <ul>
+              <li>Геотермальная скважина</li>
+              <li><a href="../calculatePage/calculate.html">Сделать расчет</a></li>
+            </ul>
+          </div>
+          <div class="footer__list">
+            <div class="list__title">Контакты</div>
+            <ul>
+              <li>info@palaredge.kz</li>
+              <li>+7 701 435 9691</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__link">
+          <img src="../../img/socials-logos/Frame 149.svg" alt="">
+          <img src="../../img/socials-logos/Frame 150.svg" alt="">
+          <img src="../../img/socials-logos/Frame 151.svg" alt="">
+        </div>
+        <div class="footer__copyright">
+          Все права защищены 2023
+        </div>
+      </footer>
+    </div>
+  </div>
+
+</body>
+
+</html>

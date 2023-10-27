@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Polaredge</title>
+  <script src="./libs/gsap/gsap.min.js" defer></script>
+  <script src="./libs/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="./libs/gsap/ScrollSmoother.min.js" defer></script>
+  <script src="./libs/swiper/swiper-bundle.min.js" defer></script>
+  <link rel="stylesheet" href="./css/main.css">
+  <script src="./js/app.js" defer></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <header class="navbar">
+        <nav class="navbar__menu">
+          <div class="logo">PolarEdge</div>
+          <ul class="navbar__list">
+            <li class="navbar__item"><a href="#what_is_that">Что это?</a></li>
+            <li class="navbar__item"><a href="#advantages">Преимущества</a></li>
+            <li class="navbar__item"><a href="#htw">Как это работает</a></li>
+            <li class="navbar__item"><a href="#news">Новости</a></li>
+          </ul>
+          <div class="lang">RU</div>
+          <div class="burger__menu"><img src="./img/burgermenu.svg" alt=""></div>
+        </nav>
+      </header>
+      <main>
+        <div class="hero">
+          <div class="container">
+            <div data-speed=".9" class="main__header">
+              <div class="main__title">
+                <h1>Климатическая система для дома: кондиционирование, влажность, отопление, возобновляемый
+                  источник энергии</h1>
+                <p class="main__subtitle">Экологичный комфорт и равномерное распределение температуры по всему
+                  помещению</p>
+                <div class="main__buttons">
+                  <a class="main__btn" href="#application">Оставить заявку</a>
+                  <a class="main__btn" href="./pages/calculatePage/calculate.html">Сделать расчет</a>
+                </div>
+              </div>
+            </div>
+            <img data-speed=".75" class="hero__image" src="./img/hero.png" alt="">
+
+          </div>
+        </div>
+        <div class="about_me">
+          <div class="about_me__title">
+            Устанавливаем системы<br />
+            и продаем комплектующие
+          </div>
+          <div class="about_me__blocks">
+            <div class="about_me__social">
+              <p>Читайте о нас <br> в соц сетях:</p>
+            </div>
+            <div class="about_me__system">
+              <p>Из чего состоит система?</p>
+              <a href="./pages/detailes/detailes.html">Узнать подробнее</a>
+            </div>
+            <div class="about_me__logo-s">
+              PolarEdge
+            </div>
+          </div>
+        </div>
+        <div class="what_is_that" id="what_is_that">
+          <div data-speed="0.9" class="what_is_that__textblock">
+            <p class="what_is_that__title">Что это такое?</p>
+            <div class="what_is_that__subtext">
+              Холодный потолок — это технология, которая используется вместо кондиционеров.
+            </div>
+            <div class="what_is_that__subtext">
+              Помещение охлаждается благодаря капиллярным матам — системе из трубок, устойчивых к коррозии,
+              перепадам температуры и давлению. А в качестве теплоносителя используется чистая дистиллированная
+              вода.
+            </div>
+            <div class="what_is_that__subtext">
+              Система равномерно распределяет прохладу и создает комфортный и здоровый микроклимат по всему дому.
+              Она не выделяет вредных веществ, не вызывает аллергии и не наносит вред окружающей среде.
+            </div>
+            <div class="what_is_that__subtext">
+              Капиллярные маты можно установить под штукатурку, бетон, гипсокартон или металлические панели. В них
+              не возникает накипь, не попадает грязь и не накапливается конденсат.
+            </div>
+            <div class="what_is_that__subtext">
+              Капилляры не требуют технической поддержки и могут прослужить более 50 лет.
+            </div>
+          </div>
+          <div class="what_is_that__image"></div>
+        </div>
+        <div class="advantages" id="advantages">
+          <div class="advantages__title">
+            Преимущества
+          </div>
+          <div class="advantages__pages__mobile">
+            <ul class="advantage__list">
+              <li class="active_li">1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </div>
+          <div class="advantages__card_container">
+            <div class="advantage__card adv_1">
+              <div class="advantages__pages">
+                <ul class="advantage__list">
+                  <li class="active_li">1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                </ul>
+              </div>
+              <div class="advantage__text">
+                <div class="head">Тишина</div>
+                <div class="title">Работает бесшумно</div>
+                <div class="subtitle">Вы не услышите звуки устройства, шум внутренних блоков <br> или журчание воды
+                </div>
+              </div>
+              <div class="advantage__image advantage__image_1">
+              </div>
+            </div>
+            <div class="advantage__card adv_2">
+              <div class="advantages__pages">
+                <ul class="advantage__list">
+                  <li>1</li>
+                  <li class="active_li">2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                </ul>
+              </div>
+              <div class="advantage__text">
+                <div class="head">Чистый воздух</div>
+                <div class="title">Не вызывает аллергии и переохлаждения</div>
+                <div class="subtitle">С комфортной влажностью и отсутствием <br> вентиляторов не будет сырости, пыли и
+                  сквозняков или журчание воды</div>
+              </div>
+              <div class="advantage__image advantage__image_2">
+              </div>
+            </div>
+            <div class="advantage__card adv_3">
+              <div class="advantages__pages">
+                <ul class="advantage__list">
+                  <li>1</li>
+                  <li>2</li>
+                  <li class="active_li">3</li>
+                  <li>4</li>
+                  <li>5</li>
+                </ul>
+              </div>
+              <div class="advantage__text">
+                <div class="head">Компактность </div>
+                <div class="title">Не сужает пространство</div>
+                <div class="subtitle">Установка не заметна под отделкой, не занимает много места и не уменьшает высоту
+                  потолков </div>
+              </div>
+              <div class="advantage__image advantage__image_3">
+              </div>
+            </div>
+            <div class="advantage__card adv_4">
+              <div class="advantages__pages">
+                <ul class="advantage__list">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li class="active_li">4</li>
+                  <li>5</li>
+                </ul>
+              </div>
+              <div class="advantage__text">
+                <div class="head">Энергоэффективность</div>
+                <div class="title">Экономит энергию</div>
+                <div class="subtitle">Сокращает потребление электричества на 30% в сравнении с обычными кондиционерами
+                </div>
+              </div>
+              <div class="advantage__image advantage__image_4">
+              </div>
+            </div>
+            <div class="advantage__card adv_5">
+              <div class="advantages__pages">
+                <ul class="advantage__list">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li class="active_li">5</li>
+                </ul>
+              </div>
+              <div class="advantage__text">
+                <div class="head">Гибкость</div>
+                <div class="title">Устанавливается на любых поверхностях</div>
+                <div class="subtitle">Конструкцию можно поставить на потолках, полах и стенах всех форм и размеров
+                </div>
+              </div>
+              <div class="advantage__image advantage__image_3">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="htw" id="htw">
+          <div class="htw__title">Как это работает</div>
+          <div class="htw__content">
+            <div class="htw__text">
+              В потолок, стену или пол встраиваются капиллярные маты — система из плотно соединенных легких и эластичных
+              полипропиленовых трубок. По трубкам циркулирует дистиллированная вода.
+              <br><br>
+              Вода соприкасается с воздухом в помещении, нагретым от тепла людей, техники или солнечного света. По
+              трубам
+              она поступает в холодильный блок, отдает поглощенное тепло и возвращается в капиллярные маты уже
+              охлажденной.
+              <br><br>
+              Благодаря этой схеме в комнате понижается температура и создается комфортный микроклимат.
+            </div>
+            <div class="htw__progress_bar"></div>
+            <div class="htw__image htw__image_1"></div>
+          </div>
+          <div class="htw__content">
+            <div class="htw__text">
+              В потолок, стену или пол встраиваются капиллярные маты — система из плотно соединенных легких и эластичных
+              полипропиленовых трубок. По трубкам циркулирует дистиллированная вода.
+            </div>
+            <div class="htw__progress_bar"></div>
+            <div class="htw__image htw__image_2"></div>
+          </div>
+          <div class="htw__content">
+            <div class="htw__text">
+              Благодаря этой схеме в комнате понижается температура и создается комфортный микроклимат.
+            </div>
+            <div class="htw__progress_bar"></div>
+            <div class="htw__image htw__image_2"></div>
+          </div>
+        </div>
+        <div class="news" id="news">
+          <div class="news__head">
+            <div class="news__titles">
+              <div class="news__title">Будьте в курсе новостей</div>
+              <div class="news__subtitle">Узнавайте об обновлениях и усовершенствованиях системы первыми</div>
+            </div>
+            <a href="" class="news__link">Все новости</a>
+          </div>
+          <div class="news__container">
+            <div class="new">
+              <div class="new__image"></div>
+              <div class="new__subscription">
+                <div class="new__titles">
+                  <div class="new__date">12.10.2023</div>
+                  <div class="new__title">Установка на Толе Би</div>
+                  <div class="new__subtitle">Здесь будет информация о нас и наших работах</div>
+                </div>
+                <button class="new__button">
+                  <img src="./img/sr-arrow-upright.svg">
+                </button>
+              </div>
+
+            </div>
+            <div class="new">
+              <div class="new__image"></div>
+              <div class="new__subscription">
+                <div class="new__titles">
+                  <div class="new__date">12.10.2023</div>
+                  <div class="new__title">Установка на Толе Би</div>
+                  <div class="new__subtitle">Здесь будет информация о нас и наших работах</div>
+                </div>
+                <button class="new__button">
+                  <img src="./img/sr-arrow-upright.svg">
+                </button>
+              </div>
+
+            </div>
+            <div class="new">
+              <div class="new__image"></div>
+              <div class="new__subscription">
+                <div class="new__titles">
+                  <div class="new__date">12.10.2023</div>
+                  <div class="new__title">Установка на Толе Би</div>
+                  <div class="new__subtitle">Здесь будет информация о нас и наших работах</div>
+                </div>
+                <button class="new__button">
+                  <img src="./img/sr-arrow-upright.svg">
+                </button>
+              </div>
+            </div>
+          </div>
+          <a href="" class="news__link__mobile2">Все новости</a>
+        </div>
+        <div class="questions">
+          <div class="questions__title">Вопросы и ответы</div>
+          <div class="questions__container">
+            <div class="question">
+              <div class="question__button_wrapper">
+                <p class="question__p">Сколько это стоит?</p>
+                <button class="question__button">
+                  <img src="./img/sr-arrow-down.svg" alt="">
+                </button>
+              </div>
+              <div class="question__text">Цена зависит от формы и размера поверхности, на которую будет установлена
+                система.
+                Мы рассчитываем стоимость исходя из требований и условий наших клиентов.</div>
+            </div>
+            <div class="question">
+              <div class="question__button_wrapper">
+                <p class="question__p">Есть ли доставка?</p>
+                <button class="question__button">
+                  <img src="./img/sr-arrow-down.svg" alt="">
+                </button>
+              </div>
+              <div class="question__text">Цена зависит от формы и размера поверхности, на которую будет установлена
+                система.
+                Мы рассчитываем стоимость исходя из требований и условий наших клиентов.</div>
+            </div>
+            <div class="question">
+              <div class="question__button_wrapper">
+                <p class="question__p">Хочу сделать всё сам, что для этого нужно?</p>
+                <button class="question__button">
+                  <img src="./img/sr-arrow-down.svg" alt="">
+                </button>
+              </div>
+              <div class="question__text">Цена зависит от формы и размера поверхности, на которую будет установлена
+                система.
+                Мы рассчитываем стоимость исходя из требований и условий наших клиентов.</div>
+            </div>
+          </div>
+        </div>
+        <div class="application" id="application">
+          <p class="form__title">Оставьте заявку — мы свяжемся с вами <br /> и проконсультируем</p>
+
+          <form action="" class="application_form" id="application_form">
+            <div class="name__container">
+              <label for="name" class="label__name">Меня зовут:</label>
+              <input type="text" id="name" name="name" placeholder="Укажите имя">
+            </div>
+            <div class="interested__in">
+              <label>Мне интересна:</label>
+              <input type="radio" id="setup" name="select" value="Setup">
+              <label class="setup__label" for="setup">Установка</label>
+              <span class="form__or">или</span>
+              <input type="radio" id="components" name="select" value="Components">
+              <label class="components__label" for="components">Комплектующие</label>
+            </div>
+            <div class="phone__container">
+
+              <label for="phone">Мой телефон:</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <input type="text" id="comments" name="comments"
+              placeholder="Напишите дополнительные комментарии (если имеется)"><br><br><br>
+            <input type="submit" class="form__button" value="Отправить">
+          </form>
+
+        </div>
+        <div class="map">
+          <div class="map__top_block"></div>
+          <div style="position:relative;overflow:hidden;"><a
+              href="https://yandex.ru/maps/162/almaty/?utm_medium=mapframe&utm_source=maps"
+              style="color:#eee;font-size:12px;position:absolute;top:0px;">Алматы</a><a
+              href="https://yandex.ru/maps/162/almaty/house/Y08YfwVmSkIBQFppfX5wdnpnYw==/?ll=76.971917%2C43.240369&utm_medium=mapframe&utm_source=maps&z=12.08"
+              style="color:#eee;font-size:12px;position:absolute;top:14px;">Проспект Аль-Фараби, 71 —
+              Яндекс Карты</a><iframe class="map__frame"
+              src="https://yandex.ru/map-widget/v1/?ll=76.971917%2C43.240369&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0Njc2OTMyMzAzEkbSmtCw0LfQsNKb0YHRgtCw0L0sINCQ0LvQvNCw0YLRiywg05jQuy3QpNCw0YDQsNCx0Lgg0LTQsNKj0pPRi9C70YssIDcxIgoNTtqZQhXe3ixC&z=12.08"
+              width="100%" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="footer__info">
+          <div class="footer__logo">
+            <img src="./img/logo2.svg" alt="">
+            <div class="footer__adress">
+              Алматы, Казахстан <br>
+              ул. Аль-Фараби 71
+            </div>
+          </div>
+          <div class="footer__list">
+            <div class="list__title">Компания</div>
+            <ul>
+              <li><a href="#what_is_that">Что это?</a> </li>
+              <li><a href="#advantages">Преимущества</a></li>
+              <li><a href="#htw">Как это работает</a></li>
+              <li><a href="#news">Новости</a></li>
+            </ul>
+          </div>
+          <div class="footer__list">
+            <div class="list__title">Застроищикам</div>
+            <ul>
+              <li><a href="./pages/borehole/borehole.html">Геотермальная скважина</a></li>
+              <li><a href="./pages/calculatePage/calculate.html">Сделать расчет</a></li>
+            </ul>
+          </div>
+          <div class="footer__list">
+            <div class="list__title">Контакты</div>
+            <ul>
+              <li>info@palaredge.kz</li>
+              <li>+7 701 435 9691</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__link">
+          <img src="./img/socials-logos/Frame 149.svg" alt="">
+          <img src="./img/socials-logos/Frame 150.svg" alt="">
+          <img src="./img/socials-logos/Frame 151.svg" alt="">
+        </div>
+        <div class="footer__copyright">
+          Все права защищены 2023
+        </div>
+      </footer>
+      <div class="mobile__nav">
+        <button class="home">
+          <img src="" alt="" class="home__img">
+          <p class="home__text">Главная</p>
+        </button>
+        <button class="calculate">
+          <img src="" alt="" class="calculate__img">
+        </button>
+        <button class="borehole">
+          <img src="" alt="" class="borehole__img">
+          <p class="borehole__text">Про скважину</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
