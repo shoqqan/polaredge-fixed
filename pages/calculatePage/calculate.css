@@ -425,7 +425,7 @@ footer {
     row-gap: 2em;
 }
 
-.footer__adress {
+.footer__address {
     width: calc(var(--index)*10);
 }
 
