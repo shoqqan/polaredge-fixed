@@ -513,6 +513,7 @@ footer {
         position: fixed;
         background-color: var(--background-color);
         z-index: 1000;
+        padding: 0;
     }
 
     .logo {
