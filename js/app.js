@@ -4,7 +4,8 @@ function extractBaseURL(url) {
     return `${anchor.protocol}//${anchor.host}/`;
 }
 
-let URL = window.location.href.includes("localhost") ? extractBaseURL(window.location.href) : "https://shoqqan.github.io/";
+let URL = window.location.href.includes("localhost") ? extractBaseURL(window.location.href)+"polaredge/" : "https://shoqqan.github.io/polaredge-fixed/";
+console.log(URL);
 const changeURL = (url) => {
     window.location.href = URL + url;
 }
