@@ -5,8 +5,7 @@ function extractBaseURL(url) {
 }
 
 const changeURL = (url) => {
-
-    window.location.href = window.location.href.includes("localhost")?extractBaseURL(window.location.href)+"polaredge/" + url:"https://shoqqan.github.io/polaredge-fixed/";
+    window.location.href = window.location.href.includes("localhost")?extractBaseURL(window.location.href)+"polaredge/" + url:"https://shoqqan.github.io/polaredge-fixed/"+url;
 }
 const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
