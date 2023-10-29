@@ -1,5 +1,12 @@
-const changeURL = (url)=>{
-    window.location.href=url;
+function extractBaseURL(url) {
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    return `${anchor.protocol}//${anchor.host}/`;
+}
+
+let URL = window.location.href.includes("localhost") ? extractBaseURL(window.location.href) : "https://shoqqan.github.io/";
+const changeURL = (url) => {
+    window.location.href = URL + url;
 }
 const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
@@ -13,6 +20,7 @@ const postData = async (url = '', data = {}) => {
     });
     return response.json();
 }
+
 // if (ScrollTrigger.isTouch !== 1) {
 //   gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 //   ScrollSmoother.create({
