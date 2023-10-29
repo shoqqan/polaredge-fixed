@@ -22,6 +22,10 @@
     src: url(../../fonts/DINPro.woff2);
 }
 
+.wrapper, .content, .what_is_that__textblock, .advantage__card, .main__header, .hero__image > *{
+    will-change: transform;
+}
+
 body {
     background-color: #F3F7F9;
     color: var(--text-color1);
@@ -275,6 +279,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .wrapper, .content, .what_is_that__textblock, .advantage__card, .main__header, .hero__image > *{
+        will-change: unset;
+    }
+
     .navbar {
         position: fixed;
         background-color: var(--background-color);
@@ -369,9 +377,14 @@ footer {
         border: none;
         background-color: var(--background-color);
     }
+    .mobile__bottom__button p{
+        font-family: raleway-c;
+    }
     .mobile__calculate_button{
         position: absolute;
         left: 40%;
         bottom: 20%;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
     }
 }

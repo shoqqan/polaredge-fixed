@@ -1,14 +1,17 @@
+const changeURL = (url)=>{
+    window.location.href=url;
+}
 const postData = async (url = '', data = {}) => {
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    },
-    body: JSON.stringify(data)
-  });
-  return response.json();
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(data)
+    });
+    return response.json();
 }
 // if (ScrollTrigger.isTouch !== 1) {
 //   gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
@@ -38,47 +41,46 @@ const postData = async (url = '', data = {}) => {
 // }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const questions = document.querySelectorAll('.question');
+    const questions = document.querySelectorAll('.question');
 
-  questions.forEach((question) => {
-    const button = question.querySelector('.question__button');
+    questions.forEach((question) => {
+        const button = question.querySelector('.question__button');
 
-    button.addEventListener('click', function () {
-      question.classList.toggle('question__active')
-      button.classList.toggle('button__active')
+        button.addEventListener('click', function () {
+            question.classList.toggle('question__active')
+            button.classList.toggle('button__active')
+        });
     });
-  });
 });
 
 
 const swiper = new Swiper('.swiper', {
-  direction: 'horizontal',
-  loop: true,
+    direction: 'horizontal',
+    loop: true,
 
-  pagination: {
-    el: '.swiper-pagination',
-  },
+    pagination: {
+        el: '.swiper-pagination',
+    },
 
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
 
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
 });
 
-if (document.getElementById('application_form')){
-  const formElement = document.getElementById('application_form');
-  formElement.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = new FormData(formElement);
-    const name = formData.get('name');
-    const select = formData.get('select');
-    const phone = formData.get('phone');
-    const comments = formData.get('comments');
-    postData("http://localhost:3000/mail", { name, select, phone, comments })
-  });
+if (document.getElementById('application_form')) {
+    const formElement = document.getElementById('application_form');
+    formElement.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(formElement);
+        const name = formData.get('name');
+        const select = formData.get('select');
+        const phone = formData.get('phone');
+        const comments = formData.get('comments');
+        postData("http://localhost:3000/mail", {name, select, phone, comments})
+    });
 }
-
