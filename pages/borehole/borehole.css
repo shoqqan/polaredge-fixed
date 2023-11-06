@@ -290,19 +290,19 @@ a {
 }
 
 .advantage__image_1 {
-    background-image: url(../../img/advantage1.png);
+    background-image: url(../../img/main/advantages/image-1.png);
 }
 
 .advantage__image_2 {
-    background-image: url(../../img/advantage2.png);
+    background-image: url(../../img/main/advantages/image-2.png);
 }
 
 .advantage__image_3 {
-    background-image: url(../../img/advantage3.png);
+    background-image: url(../../img/main/advantages/image-3.png);
 }
 
 .advantage__image_4 {
-    background-image: url(../../img/advantage4.png);
+    background-image: url(../../img/main/advantages/image-4.png);
 }
 
 .active_li {
@@ -343,7 +343,7 @@ a {
 .htw__progress_bar {
     width: 2rem;
     height: 35rem;
-    background-image: url(../../img/line-divider.png);
+    /*background-image: url(../../img/line-divider.png);*/
     background-size: contain;
     background-position: top;
     background-repeat: no-repeat;
@@ -571,6 +571,9 @@ footer {
         width: 24rem;
     }
 
+    .main__title{
+        padding: 0 2rem;
+    }
     .main__subtitle {
         width: 20rem;
         font-size: 1rem;
@@ -650,7 +653,7 @@ footer {
         width: 100%;
     }
     .questions{
-        padding: 5rem 2rem;
+        padding: 7rem 2rem;
     }
     .question__button{
         padding: 0.25rem;

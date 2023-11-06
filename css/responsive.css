@@ -1,0 +1,262 @@
+
+@media screen and (max-width: 767px) {
+    /* Paddings */
+    .section-pd {
+        padding: 40px 0;
+    }
+
+    .navbar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        height: 72px;
+        z-index: 10;
+        width: 100%;
+        background-color: var(--color-white);
+        box-shadow: 0px 0.5px 0px 0px #C7C7CD inset;
+    }
+    .navbar .navbar-link {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 150%;
+        padding: 13px;
+        width: 100%;
+    }
+    .navbar .navbar-link.active {
+        color: var(--primary-color);
+    }
+    .navbar-fav {
+        position: relative;
+    }
+    .navbar-fav .special-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        position: absolute;
+        top: -32px;
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: var(--text-accent);
+        box-shadow: 0px 8px 10px 0px rgba(58, 58, 58, 0.20);
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: #F6F5F5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: var(--text-accent);
+        transition: .4s;
+    }
+    .nav-btn circle {
+        transition: .4s;
+    }
+    .nav-btn:hover circle {
+        cx: 7;
+        cy: 7;
+    }
+    .nav-btn::before {
+        content: '';
+        width: 1.5px;
+        height: 1.5px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 50%;
+        background-color: #33333333;
+        transition: .4s;
+        transition-delay: .2;
+    }
+    .nav-btn:hover::before {
+        width: 20px;
+        height: 20px;
+    }
+
+    .header-edge {
+        padding: 8px 0;
+    }
+    .header-inner .nav {
+        display: none;
+    }
+    
+    .hero-block {
+        height: auto;
+        padding-top: 100px;
+    }
+    .hero-text h1 {
+        font-size: 24px;
+    }
+    .hero-text p {
+        font-size: 16px;
+    }
+    .hero-text .btns { 
+        flex-direction: column;
+    }
+    
+    /* Name */
+    .social-sub {
+        height: auto;
+    }
+    .social-sub .social-links {
+        padding: 24px;
+        align-items: center;
+        gap: 16px;
+    }
+    .social-sub .liquid {
+        left: 0;
+    }
+    .social-links .title-h3 {
+        font-size: 18px;
+    }
+    .what-in {
+        margin-top: 16px;
+        height: 260px;
+    }
+    .logo-sub {
+        height: 260px;
+    }
+    .logo-sub svg {
+        height: 50px;
+        width: 228px;
+    }
+
+    /* Name */
+    .what-is .title-main {
+        margin-bottom: 16px;
+    }
+    .what-is p {
+        margin-top: 8px;
+    }
+
+    /* Advantages */
+    .card-swipe .card-item {
+        padding: 24px 16px;
+        flex-direction: column-reverse;
+        top: 96px;
+        gap: 24px;
+    }
+    .card-swipe .card-item .image {
+        width: 100%;
+        height: auto;
+        padding-bottom: 100.25%;
+    }
+    .image .image-item img {
+        width: auto;
+        height: auto;
+    }
+    .card-swipe .card-item .info {
+        width: 100%;
+    }
+    .card-swipe .card-item h3 {
+        margin-top: 16px;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .card-swipe .card-item p {
+        line-height: 20px;
+    }
+
+    .news-title {
+        justify-content: flex-start;
+        margin-bottom: 8px;
+    }
+    .news-title a {
+        display: none;
+    }
+    .news-desc {
+        font-size: 16px;
+    }
+    .news-list {
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 12px;
+    }
+    .news-item {
+        flex: 0 0 90%;
+    }
+
+     /* FAQs */
+     .faq-list .faq-item .faq-collapse {
+        gap: 16px;
+     }
+    .faq-list .faq-item .faq-collapse h3 {
+        font-size: 20px;
+    }
+    .faq-list .faq-item p {
+        color: var(--text-accent);
+    }
+    .faq-item .faq-btn {
+        width: 24px;
+        height: 24px;
+    }
+    .faq-item .faq-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    .faq-list .faq-item {
+        padding: 16px;
+    }
+
+    /* Callback */
+    .group-callback, .group-radio-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .group-callback label, .radio-title {
+        font-size: 20px;
+    }
+    .group-callback input, .input-callback {
+        font-size: 16px;
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label {
+        font: 16px;
+    }
+    .radio-row .radio-subtitle {
+        display: none;
+    }
+    textarea.input-callback {
+        height: 60px;
+    }
+    .form-callback button {
+        width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 40px 0 128px;
+    }
+    .footer-logo {
+        margin-bottom: 16px;
+    }
+    .footer .footer-logo .footer-adress {
+        font-size: 14px;
+        margin-top: 12px;
+    }
+    .footer ul {
+        margin-top: 12px;
+    }
+    .footer .list-title {
+        margin-top: 24px;
+    }
+    
+    .social-footer {
+        align-items: flex-start;
+    }
+    .copyright {
+        margin-top: 16px;
+    }
+}
