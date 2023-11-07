@@ -79,6 +79,38 @@ blocks.forEach((block, index) => {
     });
 });
 
+
+
+const items = document.querySelectorAll('.slider-progress-item');
+const sliderContent = document.querySelector('.slider-progress-content');
+
+let tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".how-it-work",
+        toggleActions: "restart complete reverse resume",
+        start: "top top",
+        scrub: true,
+        pin: true,
+        end: "+=4000"
+    }
+});
+tl.to(".slider-progress-1",{
+    autoAlpha: 0,
+    // delay:2
+})
+tl.from(".slider-progress-2",{
+    autoAlpha:0,
+    y:50,
+})
+tl.to(".slider-progress-2",{
+    autoAlpha: 0,
+})
+tl.from(".slider-progress-3",{
+    autoAlpha:0,
+    y:50,
+})
+
+
 // FAQs
 
 const accordionBtns = document.querySelectorAll(".faq-collapse");

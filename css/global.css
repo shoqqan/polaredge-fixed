@@ -722,6 +722,10 @@ p {
   .mb-5 {
     margin-bottom: 64px;
   }
+
+  .mb-6{
+      margin-bottom: 11rem;
+  }
   
   .prl-0 {
     padding-left: 0;

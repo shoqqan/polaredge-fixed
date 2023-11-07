@@ -2,7 +2,7 @@
     display: none;
 }
 .header-edge {
-    background-color: transparent;
+    background-color: #F3F3F5;
     padding: 16px 0;
     position: fixed;
     width: 100%;
@@ -254,51 +254,68 @@
 
 /* How It Work */
 .how-it-work {
+    overflow: hidden;
     height: 100vh;
 }
-.slider-progress {
+.slider-content{
     position: relative;
 }
-.slider-progress-button {
+.slider-progress {
+    width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.slider-progress p{
+    position: relative;
+    width: 30rem;
+}
+.slider-progress-text{
     display: flex;
     flex-direction: column;
-    height: 100%;
-    z-index: -1;
+    row-gap: 2rem;
 }
-.slider-progress-button::before {
-    content: '';
+.slider-line{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 1px;
     height: 60vh;
+    background-color: #D9D9D9;
+
+}
+
+.slider-num{
     position: absolute;
-    background: #D9D9D9;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    border: 1px solid #D9D9D9;
+    width: min-content;
+    padding: 0.2rem;
+    border-radius: 50%;
 }
-.slider-progress-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+.slider-num2{
+    top: 50%;
 }
-.slider-progress-item .left, .slider-progress-item .right {
-    flex: 0 0 40%;
+.slider-num3{
+    bottom: 0%;
 }
-.slider-progress-item .right {
+
+.slider-progress-image{
     position: relative;
+    width: 20rem;
+    height: 20rem;
 }
-.slider-progress-item .right img {
+.slider-progress-image img{
     position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    top:0;
+    left:0;
+    width: 20rem;
+}
+
+.slider-progress-image img:nth-child(2) {
+    z-index: 1; /* Set a higher z-index to make it appear on top */
 }
 
 
@@ -607,3 +624,12 @@
     0%{transform:translate(0,0)}
   }
   
+  @media (max-width: 766px) {
+      .slider-line{
+          display: none;
+      }
+      .slider-progress{
+          flex-direction: column-reverse;
+      }
+      
+  }
