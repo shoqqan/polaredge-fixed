@@ -116,6 +116,35 @@ const ground = Matter.Bodies.rectangle(containerWidth / 2, containerHeight, cont
 const roof = Matter.Bodies.rectangle(containerWidth / 2, 0, containerWidth, 10, wallOptions);
 const leftWall = Matter.Bodies.rectangle(0, containerHeight / 2, 10, containerHeight, wallOptions);
 const rightWall = Matter.Bodies.rectangle(containerWidth, containerHeight / 2, 10, containerHeight, wallOptions);
+const constraintOptions = {
+    isStatic: true,
+};
+
+// Создание ограничений для горизонтальных границ
+const leftConstraint = Matter.Constraint.create({
+    bodyA: leftWall,
+    pointA: { x: -containerWidth / 2, y: 0 },
+    bodyB: ground,
+    pointB: { x: -containerWidth / 2, y: 0 },
+    ...constraintOptions,
+});
+
+const rightConstraint = Matter.Constraint.create({
+    bodyA: rightWall,
+    pointA: { x: containerWidth / 2, y: 0 },
+    bodyB: ground,
+    pointB: { x: containerWidth / 2, y: 0 },
+    ...constraintOptions,
+});
+
+// Создание ограничения для верхней границы
+const roofConstraint = Matter.Constraint.create({
+    bodyA: roof,
+    pointA: { x: 0, y: -containerHeight / 2 },
+    bodyB: ground,
+    pointB: { x: 0, y: -containerHeight / 2 },
+    ...constraintOptions,
+});
 Matter.World.add(world, [ground, roof, leftWall, rightWall]);
 
 tags.forEach(tag => {
@@ -127,10 +156,11 @@ tags.forEach(tag => {
         -height,
         width,
         height,
-        { restitution: 0.7 }
+        { restitution: 0.8}
     );
 
-    Matter.World.add(world, [body]);
+    Matter.World.add(world, [body,ground,roof, leftWall, roofConstraint]);
+    // Matter.World.add(world, [ground, roof, leftWall, rightWall]);
 
     // Обновление позиции DOM-элемента на основе физической модели
     Matter.Events.on(engine, 'afterUpdate', function() {
