@@ -1,4 +1,41 @@
-function extractBaseURL(url) {
+const formValidate = (form) => {
+    let error = 0;
+    let formReq = document.querySelectorAll("._req")
+    formReq.forEach((el) => {
+        const input = el;
+        formRemoveError(input)
+        if (input.id === 'name') {
+            if (!validateName(input)) {
+                formAddError(input)
+                error++
+            }
+        } else if (input.id === "phone") {
+            if (!validatePhone(input)) {
+                formAddError(input)
+                error++
+            }
+        }
+    })
+    return error
+}
+
+const formAddError = (input) => {
+    input.previousElementSibling.classList.add('error')
+    input.classList.add('error')
+}
+
+const formRemoveError = (input) => {
+    input.previousElementSibling.classList.remove('error')
+    input.classList.remove('error')
+}
+const validateName = (input) => {
+    return /^[a-zA-Zа-яА-ЯёЁ\s'\-]+$/u.test(input.value);
+}
+
+const validatePhone = (input) => {
+    return /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}/.test(input.value)
+}
+const extractBaseURL = (url) => {
     const anchor = document.createElement('a');
     anchor.href = url;
     return `${anchor.protocol}//${anchor.host}/`;
@@ -16,9 +53,18 @@ const postData = async (url = '', data = {}) => {
             'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(data)
+    }).then(()=>{
+        document.getElementById("formButton").style.backgroundColor="green"
+        document.getElementById("formButton").innerText="Ваша заявка принята!"
+        setTimeout(()=>{
+            document.getElementById("formButton").style.backgroundColor="#118DF0"
+            document.getElementById("formButton").innerText="Оставить заявку!"
+        },3000)
+
     });
     return response.json();
 }
+
 
 const showAnim = gsap.from('.header-edge', {
     yPercent: -100,
@@ -79,11 +125,6 @@ blocks.forEach((block, index) => {
     });
 });
 
-
-
-const items = document.querySelectorAll('.slider-progress-item');
-const sliderContent = document.querySelector('.slider-progress-content');
-
 let tl = gsap.timeline({
     scrollTrigger: {
         trigger: ".how-it-work",
@@ -94,20 +135,20 @@ let tl = gsap.timeline({
         end: "+=4000"
     }
 });
-tl.to(".slider-progress-1",{
+tl.to(".slider-progress-1", {
     autoAlpha: 0,
     // delay:2
 })
-tl.from(".slider-progress-2",{
-    autoAlpha:0,
-    y:50,
+tl.from(".slider-progress-2", {
+    autoAlpha: 0,
+    y: 50,
 })
-tl.to(".slider-progress-2",{
+tl.to(".slider-progress-2", {
     autoAlpha: 0,
 })
-tl.from(".slider-progress-3",{
-    autoAlpha:0,
-    y:50,
+tl.from(".slider-progress-3", {
+    autoAlpha: 0,
+    y: 50,
 })
 
 
@@ -143,44 +184,15 @@ const containerWidth = container.offsetWidth;
 const containerHeight = container.offsetHeight;
 
 // Создание границ (стен) контейнера
-const wallOptions = { isStatic: true };
+const wallOptions = {isStatic: true};
 const ground = Matter.Bodies.rectangle(containerWidth / 2, containerHeight, containerWidth, 10, wallOptions);
 const roof = Matter.Bodies.rectangle(containerWidth / 2, 0, containerWidth, 10, wallOptions);
 const leftWall = Matter.Bodies.rectangle(0, containerHeight / 2, 10, containerHeight, wallOptions);
 const rightWall = Matter.Bodies.rectangle(containerWidth, containerHeight / 2, 10, containerHeight, wallOptions);
-const constraintOptions = {
-    isStatic: true,
-};
-
-// Создание ограничений для горизонтальных границ
-const leftConstraint = Matter.Constraint.create({
-    bodyA: leftWall,
-    pointA: { x: -containerWidth / 2, y: 0 },
-    bodyB: ground,
-    pointB: { x: -containerWidth / 2, y: 0 },
-    ...constraintOptions,
-});
-
-const rightConstraint = Matter.Constraint.create({
-    bodyA: rightWall,
-    pointA: { x: containerWidth / 2, y: 0 },
-    bodyB: ground,
-    pointB: { x: containerWidth / 2, y: 0 },
-    ...constraintOptions,
-});
-
-// Создание ограничения для верхней границы
-const roofConstraint = Matter.Constraint.create({
-    bodyA: roof,
-    pointA: { x: 0, y: -containerHeight / 2 },
-    bodyB: ground,
-    pointB: { x: 0, y: -containerHeight / 2 },
-    ...constraintOptions,
-});
 Matter.World.add(world, [ground, roof, leftWall, rightWall]);
 
 tags.forEach(tag => {
-    const { width, height } = tag.getBoundingClientRect();
+    const {width, height} = tag.getBoundingClientRect();
 
     // Создание тела для каждого тега
     const body = Matter.Bodies.rectangle(
@@ -188,19 +200,19 @@ tags.forEach(tag => {
         -height,
         width,
         height,
-        { restitution: 0.8}
+        {restitution: 0.8}
     );
 
-    Matter.World.add(world, [body,ground,roof, leftWall, roofConstraint]);
+    Matter.World.add(world, [body, ground, roof, leftWall, rightWall]);
     // Matter.World.add(world, [ground, roof, leftWall, rightWall]);
 
     // Обновление позиции DOM-элемента на основе физической модели
-    Matter.Events.on(engine, 'afterUpdate', function() {
+    Matter.Events.on(engine, 'afterUpdate', function () {
         tag.style.transform = `translate(${body.position.x - width / 2}px, ${body.position.y - height / 2}px)`;
     });
 
     tag.addEventListener('mouseenter', () => {
-        Matter.Body.applyForce(body, { x: 0, y: 0 }, { x: 0, y: -0.15 });
+        Matter.Body.applyForce(body, {x: 0, y: 0}, {x: 0, y: -0.15});
     });
 });
 
@@ -225,15 +237,25 @@ const swiper = new Swiper('.swiper', {
     },
 });
 
+const mapOverlay = document.getElementById("mapOverlay");
+mapOverlay.addEventListener("click", function () {
+    mapOverlay.style.display = "none"
+});
+
+
 if (document.getElementById('application_form')) {
     const formElement = document.getElementById('application_form');
     formElement.addEventListener('submit', (e) => {
         e.preventDefault();
-        const formData = new FormData(formElement);
-        const name = formData.get('name');
-        const select = formData.get('select');
-        const phone = formData.get('phone');
-        const comments = formData.get('comments');
-        postData("http://localhost:3000/mail", {name, select, phone, comments})
+        let error = formValidate(formElement)
+        if (error === 0) {
+            const formData = new FormData(formElement);
+            const name = formData.get('name');
+            const select = formData.get('select');
+            const phone = formData.get('phone');
+            const comments = formData.get('comments');
+            postData("https://polaredgeback-production.up.railway.app/mail", {name, select, phone, comments})
+        }
+
     });
 }

@@ -532,32 +532,36 @@
                 <h2 class="title-main mb-4">Оставьте заявку — мы&nbsp;свяжемся с вами и&nbsp;проконсультируем</h2>
             </div>
             <div class="col-md-7">
-                <form class="form-callback">
+                <form class="form-callback" id="application_form">
                     <div class="group-callback">
                         <label>Меня зовут</label>
-                        <input class="input-callback" type="text" placeholder="Пример: Азамат"/>
+                        <input class="input-callback _req" type="text" id="name" name="name"
+                               placeholder="Пример: Азамат"/>
                     </div>
                     <div class="group-radio-list">
                         <span class="radio-title">Мне интересна</span>
                         <div class="radio-row">
                             <div class="group-radio">
-                                <input class="radio-callback" id="setup" type="radio" name="interes" checked/>
+                                <input class="radio-callback" id="setup" name="select" type="radio" value="Setup"
+                                       checked/>
                                 <label for="setup">Установка</label>
                             </div>
                             <span class="radio-subtitle">или</span>
                             <div class="group-radio">
-                                <input class="radio-callback" id="components" type="radio" name="interes"/>
+                                <input class="radio-callback" id="components" name="select" value="Components"
+                                       type="radio"/>
                                 <label for="components">Комплектующие</label>
                             </div>
                         </div>
                     </div>
                     <div class="group-callback">
                         <label>Мой телефон</label>
-                        <input class="input-callback" type="text" placeholder="+7 "/>
+                        <input class="input-callback _req" type="text" id="phone" name="phone" placeholder="+7 "/>
                     </div>
-                    <textarea class="input-callback" rows="1"
+                    <div id="phoneError" class="error-message"></div>
+                    <textarea class="input-callback" rows="1" name="comments"
                               placeholder="Напишите дополнительные комментарии (если имеется)"></textarea>
-                    <button class="btn btn-pry">Оставить заявку</button>
+                    <button id="formButton" class="btn btn-pry" type="submit">Оставить заявку</button>
                 </form>
             </div>
 
@@ -568,14 +572,16 @@
 
 <section class="map">
     <div class="map__top_block"></div>
-    <div style="position:relative;overflow:hidden;">
+    <div style="position:relative;overflow:hidden;" id="mapParentBlock">
         <a
                 href="https://yandex.ru/maps/162/almaty/?utm_medium=mapframe&utm_source=maps"
                 style="color:#eee;font-size:12px;position:absolute;top:0px;">Алматы</a><a
             href="https://yandex.ru/maps/162/almaty/house/Y08YfwVmSkIBQFppfX5wdnpnYw==/?ll=76.971917%2C43.240369&utm_medium=mapframe&utm_source=maps&z=12.08"
             style="color:#eee;font-size:12px;position:absolute;top:14px;">Проспект Аль-Фараби, 71 —
         Яндекс Карты</a>
+        <div class="map-overlay" id="mapOverlay"></div>
         <iframe class="map__frame"
+                id="mapFrame"
                 src="https://yandex.ru/map-widget/v1/?ll=76.971917%2C43.240369&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0Njc2OTMyMzAzEkbSmtCw0LfQsNKb0YHRgtCw0L0sINCQ0LvQvNCw0YLRiywg05jQuy3QpNCw0YDQsNCx0Lgg0LTQsNKj0pPRi9C70YssIDcxIgoNTtqZQhXe3ixC&z=12.08"
                 width="100%" height="500" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
     </div>
