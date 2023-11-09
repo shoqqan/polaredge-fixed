@@ -1,3 +1,10 @@
+// ScrollSmoother.create({
+//     wrapper: '.smoother-wrapper',
+//     content: '.smoother-content',
+//     smooth: 1.5,
+//     effects: true
+// })
+
 const formValidate = (form) => {
     let error = 0;
     let formReq = document.querySelectorAll("._req")
@@ -53,17 +60,19 @@ const postData = async (url = '', data = {}) => {
             'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(data)
-    }).then(()=>{
-        document.getElementById("formButton").style.backgroundColor="green"
-        document.getElementById("formButton").innerText="Ваша заявка принята!"
-        setTimeout(()=>{
-            document.getElementById("formButton").style.backgroundColor="#118DF0"
-            document.getElementById("formButton").innerText="Оставить заявку!"
-        },3000)
+    }).then(() => {
+        document.getElementById("formButton").style.backgroundColor = "green"
+        document.getElementById("formButton").innerText = "Ваша заявка принята!"
+        document.getElementById("application_form").reset()
+        setTimeout(() => {
+            document.getElementById("formButton").style.backgroundColor = "#118DF0"
+            document.getElementById("formButton").innerText = "Оставить заявку!"
+        }, 3000)
 
     });
     return response.json();
 }
+gsap.registerPlugin(ScrollTrigger,ScrollSmoother);
 
 
 const showAnim = gsap.from('.header-edge', {
@@ -87,7 +96,6 @@ ScrollTrigger.create({
     }
 });
 
-gsap.registerPlugin(ScrollTrigger);
 
 const blocks = document?.querySelectorAll(".card-item");
 const panelsContainer = document.querySelector(".card-swipe");
@@ -98,6 +106,7 @@ blocks.forEach((block, index) => {
             trigger: panelsContainer,
             start: "top bottom",
             end: "top top",
+            snap: 0.5,
             scrub: true,
         },
     });
@@ -125,23 +134,29 @@ blocks.forEach((block, index) => {
     });
 });
 
+
 let tl = gsap.timeline({
     scrollTrigger: {
         trigger: ".how-it-work",
         toggleActions: "restart complete reverse resume",
         start: "top top",
-        scrub: true,
+        scrub: 0.2,
         pin: true,
-        end: "+=4000"
+        end: "+=1600",
     }
 });
 tl.to(".slider-progress-1", {
     autoAlpha: 0,
+    // y:50
+    // y:-50
     // delay:2
 })
 tl.from(".slider-progress-2", {
     autoAlpha: 0,
     y: 50,
+    // yPercent: 100
+
+
 })
 tl.to(".slider-progress-2", {
     autoAlpha: 0,
@@ -174,6 +189,7 @@ accordionBtns.forEach((accordion) => {
     };
 });
 
+
 // Создание движка
 const engine = Matter.Engine.create();
 const world = engine.world;
@@ -185,26 +201,26 @@ const containerHeight = container.offsetHeight;
 
 // Создание границ (стен) контейнера
 const wallOptions = {isStatic: true};
-const ground = Matter.Bodies.rectangle(containerWidth / 2, containerHeight, containerWidth, 10, wallOptions);
-const roof = Matter.Bodies.rectangle(containerWidth / 2, 0, containerWidth, 10, wallOptions);
-const leftWall = Matter.Bodies.rectangle(0, containerHeight / 2, 10, containerHeight, wallOptions);
-const rightWall = Matter.Bodies.rectangle(containerWidth, containerHeight / 2, 10, containerHeight, wallOptions);
-Matter.World.add(world, [ground, roof, leftWall, rightWall]);
+// const ground = Matter.Bodies.rectangle(0, 0, 0, 0, wallOptions);
+const ground = Matter.Bodies.rectangle(containerWidth, 0, containerWidth*2, 1, wallOptions);
+const leftWall = Matter.Bodies.rectangle(0, 0, 20, 160, wallOptions);
+const roof = Matter.Bodies.rectangle(containerWidth, 0, containerWidth*2, 1, wallOptions);
+Matter.World.add(world, [ground,leftWall,roof]);
 
 tags.forEach(tag => {
     const {width, height} = tag.getBoundingClientRect();
 
     // Создание тела для каждого тега
     const body = Matter.Bodies.rectangle(
-        tag.offsetLeft + width / 2,
-        -height,
+        width / 2,
+        height*-1,
         width,
         height,
         {restitution: 0.8}
     );
 
-    Matter.World.add(world, [body, ground, roof, leftWall, rightWall]);
-    // Matter.World.add(world, [ground, roof, leftWall, rightWall]);
+    Matter.World.add(world, [body]);
+    Matter.World.add(world, [ground, leftWall]);
 
     // Обновление позиции DOM-элемента на основе физической модели
     Matter.Events.on(engine, 'afterUpdate', function () {

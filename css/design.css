@@ -10,7 +10,7 @@
 }
 
 .fixed-header {
-    background-color: white;
+    background-color: #F0F1F4;
     z-index: 1;
     box-shadow: 0px 2px 12px 0px rgba(51, 51, 51, 0.06);
 }
@@ -288,11 +288,14 @@
 
 .slider-content {
     position: relative;
-}
+    height: 100vh;
+
+    }
 
 .slider-progress {
     width: 100%;
     position: absolute;
+    /*scroll-snap-align: start;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -318,12 +321,21 @@
 
 .slider-num {
     position: absolute;
-    border: 1px solid #D9D9D9;
+    left:-10px;
     width: min-content;
+    background-color: #333333;
     padding: 0.2rem;
+    color: #D9D9D9;
+    border: none;
     border-radius: 50%;
 }
 
+.slider-num-none{
+    padding: 0.2rem;
+    border-radius: 50%;
+    background-color: #858585;
+    left:-2px
+}
 .slider-num2 {
     top: 50%;
 }
