@@ -72,7 +72,7 @@ const postData = async (url = '', data = {}) => {
     });
     return response.json();
 }
-gsap.registerPlugin(ScrollTrigger,ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 
 const showAnim = gsap.from('.header-edge', {
@@ -91,8 +91,18 @@ ScrollTrigger.create({
             container.classList.add('fixed-header');  // добавить класс при прокрутке вверх
         } else {
             showAnim.reverse();
-            container.classList.remove('fixed-header');  // удалить класс при прокрутке вниз
+            container.classList.remove('fixed-header');
+            container.classList.remove('top-header')
+            // удалить класс при прокрутке вниз
         }
+    }
+});
+window.addEventListener('scroll', () => {
+    const container = document.querySelector('.header-edge');
+    const isAtTop = window.scrollY === 0;
+
+    if (isAtTop) {
+        container.classList.add('top-header')
     }
 });
 
@@ -190,51 +200,6 @@ accordionBtns.forEach((accordion) => {
 });
 
 
-// Создание движка
-const engine = Matter.Engine.create();
-const world = engine.world;
-
-const tags = document.querySelectorAll('.tag');
-const container = document.querySelector('.what-in');
-const containerWidth = container.offsetWidth;
-const containerHeight = container.offsetHeight;
-
-// Создание границ (стен) контейнера
-const wallOptions = {isStatic: true};
-// const ground = Matter.Bodies.rectangle(0, 0, 0, 0, wallOptions);
-const ground = Matter.Bodies.rectangle(containerWidth, 0, containerWidth*2, 1, wallOptions);
-const leftWall = Matter.Bodies.rectangle(0, 0, 20, 160, wallOptions);
-const roof = Matter.Bodies.rectangle(containerWidth, 0, containerWidth*2, 1, wallOptions);
-Matter.World.add(world, [ground,leftWall,roof]);
-
-tags.forEach(tag => {
-    const {width, height} = tag.getBoundingClientRect();
-
-    // Создание тела для каждого тега
-    const body = Matter.Bodies.rectangle(
-        width / 2,
-        height*-1,
-        width,
-        height,
-        {restitution: 0.8}
-    );
-
-    Matter.World.add(world, [body]);
-    Matter.World.add(world, [ground, leftWall]);
-
-    // Обновление позиции DOM-элемента на основе физической модели
-    Matter.Events.on(engine, 'afterUpdate', function () {
-        tag.style.transform = `translate(${body.position.x - width / 2}px, ${body.position.y - height / 2}px)`;
-    });
-
-    tag.addEventListener('mouseenter', () => {
-        Matter.Body.applyForce(body, {x: 0, y: 0}, {x: 0, y: -0.15});
-    });
-});
-
-// Запуск движка
-Matter.Engine.run(engine);
-
 const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     loop: true,
@@ -275,3 +240,15 @@ if (document.getElementById('application_form')) {
 
     });
 }
+
+$(".bore-card .btn-bore").click(function () {
+    $(".bore-card .btn-bore").removeClass("active").eq($(this).index()).addClass("active");
+    $(".card-info").hide().eq($(this).index()).fadeIn()
+}).eq(0).addClass("active");
+
+const navigationBtn = document.querySelector('.nav-btn');
+const header = document.querySelector('.header-edge');
+navigationBtn.addEventListener("click", () => {
+    navigationBtn.classList.toggle('active');
+    header.classList.toggle('active');
+})
