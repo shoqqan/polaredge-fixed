@@ -14,12 +14,12 @@
 
 @font-face {
     font-family: raleway-c;
-    src: url(../../fonts/raleway-regular.woff2);
+    src: url(../fonts/raleway-regular.woff2);
 }
 
 @font-face {
     font-family: dinpro;
-    src: url(../../fonts/DINPro.woff2);
+    src: url(../fonts/DINPro.woff2);
 }
 
 body {
@@ -193,10 +193,10 @@ h1{
 }
 
 .first_slide{
-    background-image: url(../../img/swiper-images/tubes.png);
+    background-image: url(../img/swiper-images/tubes.png);
 }
 .second_slide{
-    background-image: url(../../img/swiper-images/holders.png);
+    background-image: url(../img/swiper-images/holders.png);
 }
 .definitions{
     width: calc(var(--index)*30);
