@@ -7,12 +7,18 @@
     padding: 16px 0;
     position: fixed;
     width: 100%;
+    z-index: 11;
 }
 
 .fixed-header {
     background-color: #F0F1F4;
     z-index: 1;
     box-shadow: 0px 2px 12px 0px rgba(51, 51, 51, 0.06);
+}
+
+.top-header {
+    background-color: transparent;
+    box-shadow: none;
 }
 
 .header-inner {
@@ -61,6 +67,15 @@
 .nav-btn {
     display: none;
 }
+/*Для стилизации активного хедера*/
+
+.nav-btn.active {
+
+}
+
+.header-edge.active {
+
+}
 
 .hero-block {
     height: 100vh;
@@ -71,6 +86,10 @@
 
 .hero-text {
     /* padding-top: 20%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .hero-text h1 {
@@ -290,7 +309,7 @@
     position: relative;
     height: 100vh;
 
-    }
+}
 
 .slider-progress {
     width: 100%;
@@ -321,7 +340,7 @@
 
 .slider-num {
     position: absolute;
-    left:-10px;
+    left: -10px;
     width: min-content;
     background-color: #333333;
     padding: 0.2rem;
@@ -330,12 +349,13 @@
     border-radius: 50%;
 }
 
-.slider-num-none{
+.slider-num-none {
     padding: 0.2rem;
     border-radius: 50%;
     background-color: #858585;
-    left:-2px
+    left: -2px
 }
+
 .slider-num2 {
     top: 50%;
 }
