@@ -134,7 +134,7 @@ blocks.forEach((block, index) => {
     );
 
     timeline.to(blocks[index - 1], {
-        filter: "blur(24px)",
+        // filter: "blur(24px)",
         scrollTrigger: {
             trigger: block,
             start: "top 200px",
@@ -248,7 +248,9 @@ $(".bore-card .btn-bore").click(function () {
 
 const navigationBtn = document.querySelector('.nav-btn');
 const header = document.querySelector('.header-edge');
+const body = document.querySelector('.app');
 navigationBtn.addEventListener("click", () => {
     navigationBtn.classList.toggle('active');
     header.classList.toggle('active');
+    body.classList.toggle('open');
 })

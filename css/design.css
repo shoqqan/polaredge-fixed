@@ -11,7 +11,7 @@
 }
 
 .fixed-header {
-    background-color: #F0F1F4;
+    background-color: var(--color-white);
     z-index: 1;
     box-shadow: 0px 2px 12px 0px rgba(51, 51, 51, 0.06);
 }
@@ -31,6 +31,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    transition: .4s;
 }
 
 .header-inner .nav .link {
@@ -170,26 +171,12 @@
     position: relative;
     z-index: 0;
 }
-
-.tags {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
+.what-in img {
     width: 100%;
     height: 100%;
-    z-index: -1;
-}
-
-.tag {
-    padding: 10px 20px;
-    background-color: #eee;
-    border-radius: 15px;
     position: absolute;
     bottom: 0;
-    will-change: transform;
-    transition: transform 0.2s;
+    z-index: -1;
 }
 
 .logo-sub {
@@ -680,6 +667,20 @@
     line-height: normal;
 }
 
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: .4s;
+    color: #118DF0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+.btn-back:hover {
+    gap: 4px;
+}
+
 
 /* Animaiton */
 .liquid circle {
@@ -809,6 +810,6 @@
 
 @media (max-width: 500px) {
     .slider-progress-text {
-        width: 25rem
+        width: 100%
     }
 }

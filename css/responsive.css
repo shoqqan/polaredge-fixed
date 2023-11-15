@@ -10,7 +10,7 @@
         position: fixed;
         bottom: 0;
         height: 72px;
-        z-index: 10;
+        z-index: 11;
         width: 100%;
         background-color: var(--color-white);
         box-shadow: 0px 0.5px 0px 0px #C7C7CD inset;
@@ -44,6 +44,11 @@
         border-radius: 12px;
         background: var(--text-accent);
         box-shadow: 0px 8px 10px 0px rgba(58, 58, 58, 0.20);
+        color: var(--color-white);
+    }
+    .navbar-fav.active .special-icon {
+        background-color: var(--color-white);
+        color: var(--primary-color);
     }
 
     .nav-btn {
@@ -90,7 +95,52 @@
     }
     .header-inner .nav {
         display: none;
+        transform: translateY(-100%);
+        position: absolute;
     }
+    .header-edge.active .header-inner .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        height: 100vh;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        transform: translateY(0);
+    }
+    .nav-btn.active, .header-edge.active .logo {
+        z-index: 11;
+    }
+    .header-inner .nav .link {
+        font-size: 24px;
+    }
+    .nav-btn.active svg {
+        display: none;
+    }
+    .nav-btn.active::after, .nav-btn.active::before {
+        content: '';
+        width: 2px;
+        height: 16px;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #333;
+        border-radius: 8px;
+    }
+    .nav-btn.active::after {
+        transform: rotate(45deg);
+    }
+    .nav-btn.active::before {
+        transform: rotate(-45deg);
+    }
+    
     
     .hero-block {
         height: auto;
@@ -122,10 +172,11 @@
         font-size: 18px;
     }
     .what-in {
-        margin-top: 16px;
+        margin-top: 24px;
         height: 260px;
     }
     .logo-sub {
+        margin-top: 24px;
         height: 260px;
     }
     .logo-sub svg {
@@ -144,7 +195,7 @@
     /* Advantages */
     .card-swipe .card-item {
         padding: 24px 16px;
-        flex-direction: column-reverse;
+        flex-direction: column;
         top: 96px;
         gap: 24px;
     }
@@ -154,7 +205,7 @@
         padding-bottom: 100.25%;
     }
     .image .image-item img {
-        width: auto;
+        width: 100%;
         height: auto;
     }
     .card-swipe .card-item .info {
@@ -208,6 +259,7 @@
     }
     .faq-list .faq-item {
         padding: 16px;
+        border-radius: 8px;
     }
 
     /* Callback */
