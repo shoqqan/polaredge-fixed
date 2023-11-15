@@ -270,3 +270,21 @@ navigationBtn.addEventListener("click", () => {
     header.classList.toggle('active');
     body.classList.toggle('open');
 })
+
+const videos = gsap.utils.toArray('video')
+
+videos.forEach(function(video, i) {
+    
+  ScrollTrigger.create({
+    trigger: ".appVideos",
+    scroller: video,
+    start: 'top center',
+    end: 'bottom center',
+    markers: true,
+    onEnter: () => video.play(),
+    onEnterBack: () => video.play(),
+    onLeave: () => video.pause(),
+    onLeaveBack: () => video.pause(),
+  });
+  
+})

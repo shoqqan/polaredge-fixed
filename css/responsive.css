@@ -92,6 +92,7 @@
 
     .header-edge {
         padding: 8px 0;
+        background-color: #eaeaea;
     }
     .header-inner .nav {
         display: none;
@@ -141,10 +142,26 @@
         transform: rotate(-45deg);
     }
     
+    /* Video */
+    .appVideos {
+        position: relative;
+        height: auto;
+        width: 100%;
+        margin-bottom: 32px;
+    }
+    .appVideos .videoPlayer {
+        width: 100%;
+    }
+    .appVideos video {
+        position: relative;
+        border-radius: 0;
+    }
     
     .hero-block {
         height: auto;
         padding-top: 100px;
+        padding-bottom: 64px;
+        flex-direction: column-reverse;
     }
     .hero-text h1 {
         font-size: 24px;
@@ -285,6 +302,13 @@
     }
     .form-callback button {
         width: 100%;
+    }
+
+    .news {
+        padding-top: 128px;
+    }
+    .news-info-title {
+        margin-top: 32px;
     }
 
     /* Footer */
