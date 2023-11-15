@@ -85,24 +85,29 @@ ScrollTrigger.create({
     start: "top top",
     end: 99999,
     onUpdate: (self) => {
-        const container = document.querySelector('.header-edge');
-        if (self.direction === -1) {
-            showAnim.play();
-            container.classList.add('fixed-header');  // добавить класс при прокрутке вверх
-        } else {
-            showAnim.reverse();
-            container.classList.remove('fixed-header');
-            container.classList.remove('top-header')
-            // удалить класс при прокрутке вниз
-        }
-    }
-});
-window.addEventListener('scroll', () => {
-    const container = document.querySelector('.header-edge');
-    const isAtTop = window.scrollY === 0;
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                const container = document.querySelector('.header-edge');
+                const isAtTop = window.scrollY === 0;
 
-    if (isAtTop) {
-        container.classList.add('top-header')
+                if (isAtTop) {
+                    container.classList.add('top-header')
+                }
+            });
+
+            const container = document.querySelector('.header-edge');
+            if (self.direction === -1) {
+                showAnim.play();
+                container.classList.add('fixed-header');
+            } else {
+                showAnim.reverse();
+                container.classList.remove('fixed-header');
+                container.classList.remove('top-header')
+            }
+        }else{
+            const container = document.querySelector('.header-edge');
+            container.classList.remove('fixed-header');
+        }
     }
 });
 
@@ -143,39 +148,36 @@ blocks.forEach((block, index) => {
         },
     });
 });
-
-
 let tl = gsap.timeline({
     scrollTrigger: {
         trigger: ".how-it-work",
         toggleActions: "restart complete reverse resume",
         start: "top top",
-        scrub: 0.2,
+        scrub: 1,
         pin: true,
-        end: "+=1600",
+        end: "+=1500",
+
     }
 });
 tl.to(".slider-progress-1", {
     autoAlpha: 0,
-    // y:50
-    // y:-50
-    // delay:2
+    pin: true
+
 })
+
 tl.from(".slider-progress-2", {
     autoAlpha: 0,
     y: 50,
-    // yPercent: 100
-
-
 })
 tl.to(".slider-progress-2", {
     autoAlpha: 0,
+
 })
 tl.from(".slider-progress-3", {
     autoAlpha: 0,
     y: 50,
-})
 
+});
 
 // FAQs
 
@@ -245,6 +247,20 @@ $(".bore-card .btn-bore").click(function () {
     $(".bore-card .btn-bore").removeClass("active").eq($(this).index()).addClass("active");
     $(".card-info").hide().eq($(this).index()).fadeIn()
 }).eq(0).addClass("active");
+
+$(document).ready(function () {
+    // Обработчик события ввода номера телефона
+    $("#phone").on("input", function () {
+        // Получаем текущее значение поля
+        var currentInput = $(this).val();
+
+        // Проверяем, начинается ли уже с "+7"
+        if (!currentInput.startsWith("+7")) {
+            // Если нет, добавляем "+7" в начало
+            $(this).val("+7 " + currentInput);
+        }
+    });
+});
 
 const navigationBtn = document.querySelector('.nav-btn');
 const header = document.querySelector('.header-edge');

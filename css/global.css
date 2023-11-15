@@ -13,10 +13,13 @@
     --background-grey: #FAFAFA;
 }
 
+html{
+}
 body {
     color: var(--text-accent);
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 .app.open {
   overflow: hidden;

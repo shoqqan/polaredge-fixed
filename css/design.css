@@ -288,20 +288,19 @@
 
 /* How It Work */
 .how-it-work {
-    overflow: hidden;
     height: 100vh;
 }
 
 .slider-content {
     position: relative;
     height: 100vh;
-
+    scroll-snap-type: y mandatory;
 }
 
 .slider-progress {
     width: 100%;
     position: absolute;
-    /*scroll-snap-align: start;*/
+    scroll-snap-align: start;
     display: flex;
     justify-content: space-between;
     align-items: center;
