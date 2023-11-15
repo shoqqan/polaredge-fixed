@@ -41,6 +41,13 @@
 .more-details {
     margin-top: 32px;
     width: calc(100% - 364px);
+    opacity: 0;
+    height: 0;
+}
+
+.more-details.active{
+    height: max-content;
+    opacity: 1;
 }
 .more-details h3 {
     font-size: 24px;
@@ -73,7 +80,7 @@
     width: 120px;
 }
 
-@media screen and (max-width: 767px) { 
+@media screen and (max-width: 767px) {
     .calculate-card {
         padding: 24px 16px;
     }
@@ -100,5 +107,5 @@
         text-align: left;
         width: 100%;
     }
-    
+
 }

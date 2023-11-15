@@ -39,6 +39,13 @@ const validateName = (input) => {
     return /^[a-zA-Zа-яА-ЯёЁ\s'\-]+$/u.test(input.value);
 }
 
+const validateNumberInput = (input) => {
+    input.value = input.value.replace(/[^0-9]/g, '');
+    if (input.value.length > 6) {
+        input.value = input.value.slice(0, 6);
+    }
+}
+
 const validatePhone = (input) => {
     return /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}/.test(input.value)
 }
@@ -50,6 +57,21 @@ const extractBaseURL = (url) => {
 
 const changeURL = (url) => {
     window.location.href = window.location.href.includes("localhost") ? extractBaseURL(window.location.href) + "polaredge/" + url : "https://shoqqan.github.io/polaredge-fixed/" + url;
+}
+const getPrice = async () => {
+    if (document.getElementById('calculate-input').value) {
+        try {
+            const response = await fetch(`https://polaredgeback-production.up.railway.app/price/${document.getElementById('calculate-input').value}`)
+            const data = await response.json();
+            const price = document.getElementById('price')
+            const detailsButton = document.querySelector('.btn-details');
+            price.innerText = data.result + " ₸";
+            detailsButton.style.display = 'block'; // Show the button
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 }
 const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
@@ -104,7 +126,7 @@ ScrollTrigger.create({
                 container.classList.remove('fixed-header');
                 container.classList.remove('top-header')
             }
-        }else{
+        } else {
             const container = document.querySelector('.header-edge');
             container.classList.remove('fixed-header');
         }
@@ -249,14 +271,9 @@ $(".bore-card .btn-bore").click(function () {
 }).eq(0).addClass("active");
 
 $(document).ready(function () {
-    // Обработчик события ввода номера телефона
     $("#phone").on("input", function () {
-        // Получаем текущее значение поля
         var currentInput = $(this).val();
-
-        // Проверяем, начинается ли уже с "+7"
         if (!currentInput.startsWith("+7")) {
-            // Если нет, добавляем "+7" в начало
             $(this).val("+7 " + currentInput);
         }
     });
@@ -269,4 +286,14 @@ navigationBtn.addEventListener("click", () => {
     navigationBtn.classList.toggle('active');
     header.classList.toggle('active');
     body.classList.toggle('open');
+})
+
+document.getElementById('calculate-btn').addEventListener('click', () => {
+    getPrice();
+})
+
+document.querySelector('.btn-details').addEventListener('click', () => {
+    document.querySelector('.more-details').classList.toggle('active')
+    const isActive = document.querySelector('.more-details').classList.contains('active');
+    document.querySelector('.btn-details').innerText = isActive ? "Скрыть детали" : "Раскрыть детали"
 })
