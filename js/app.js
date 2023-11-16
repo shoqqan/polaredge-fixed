@@ -95,44 +95,55 @@ const postData = async (url = '', data = {}) => {
     });
     return response.json();
 }
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+let prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+let currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("fix-head").style.top = "0";
+    document.getElementById("fix-head").style.backgroundColor = "white";
+  } else {
+    document.getElementById("fix-head").style.top = "-75px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+// gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-const showAnim = gsap.from('.header-edge', {
-    yPercent: -100,
-    paused: true,
-    duration: 0.2
-}).progress(1);
+// const showAnim = gsap.from('.header-edge', {
+//     yPercent: -100,
+//     paused: true,
+//     duration: 0.2
+// }).progress(1);
 
-ScrollTrigger.create({
-    start: "top top",
-    end: 99999,
-    onUpdate: (self) => {
-        if (window.innerWidth > 768) {
-            window.addEventListener('scroll', () => {
-                const container = document.querySelector('.header-edge');
-                const isAtTop = window.scrollY === 0;
+// ScrollTrigger.create({
+//     start: "top top",
+//     end: 99999,
+//     onUpdate: (self) => {
+//         if (window.innerWidth > 768) {
+//             window.addEventListener('scroll', () => {
+//                 const container = document.querySelector('.header-edge');
+//                 const isAtTop = window.scrollY === 0;
 
-                if (isAtTop) {
-                    container.classList.add('top-header')
-                }
-            });
+//                 if (isAtTop) {
+//                     container.classList.add('top-header')
+//                 }
+//             });
 
-            const container = document.querySelector('.header-edge');
-            if (self.direction === -1) {
-                showAnim.play();
-                container.classList.add('fixed-header');
-            } else {
-                showAnim.reverse();
-                container.classList.remove('fixed-header');
-                container.classList.remove('top-header')
-            }
-        } else {
-            const container = document.querySelector('.header-edge');
-            container.classList.remove('fixed-header');
-        }
-    }
-});
+//             const container = document.querySelector('.header-edge');
+//             if (self.direction === -1) {
+//                 showAnim.play();
+//                 container.classList.add('fixed-header');
+//             } else {
+//                 showAnim.reverse();
+//                 container.classList.remove('fixed-header');
+//                 container.classList.remove('top-header')
+//             }
+//         } else {
+//             const container = document.querySelector('.header-edge');
+//             container.classList.remove('fixed-header');
+//         }
+//     }
+// });
 
 
 const blocks = document?.querySelectorAll(".card-item");

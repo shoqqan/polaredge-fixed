@@ -23,11 +23,12 @@
 }
 
 .header-edge {
-    /* background-color: #F3F3F5; */
+    background-color: transparent;
     padding: 16px 0;
     position: fixed;
     width: 100%;
     z-index: 11;
+    transition: top 0.3s;
 }
 
 .fixed-header {
@@ -715,7 +716,7 @@
 }
 
 /* NEWS */
-.news {
+.news-block {
     padding-top: 128px;
     background: linear-gradient(180deg, #F0F1F4 0%, rgba(246, 245, 245, 0.50) 46.73%, #FFF 100%);
 }
