@@ -65,7 +65,8 @@ const getPrice = async () => {
             const data = await response.json();
             const price = document.getElementById('price')
             const detailsButton = document.querySelector('.btn-details');
-            price.innerText = data.result + " ₸";
+            const formattedPrice = data.result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            price.innerText = `~${formattedPrice} ₸`;
             detailsButton.style.display = 'block'; // Show the button
         } catch (error) {
             console.error(error);
