@@ -97,17 +97,20 @@ const postData = async (url = '', data = {}) => {
 }
 
 let prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-let currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("fix-head").style.top = "0";
-    document.getElementById("fix-head").style.backgroundColor = "white";
-  } else {
-    document.getElementById("fix-head").style.top = "-75px";
-  }
-  prevScrollpos = currentScrollPos;
+window.onscroll = function () {
+    const isAtTop = window.scrollY === 0;
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("fix-head").style.top = "0";
+        document.getElementById("fix-head").style.backgroundColor = "white";
+    } else if (isAtTop) {
+        document.getElementById("fix-head").style.backgroundColor = "red";
+    }else
+    {
+        document.getElementById("fix-head").style.top = "-75px";
+    }
+    prevScrollpos = currentScrollPos;
 }
-// gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 // const showAnim = gsap.from('.header-edge', {
 //     yPercent: -100,
@@ -122,7 +125,6 @@ let currentScrollPos = window.pageYOffset;
 //         if (window.innerWidth > 768) {
 //             window.addEventListener('scroll', () => {
 //                 const container = document.querySelector('.header-edge');
-//                 const isAtTop = window.scrollY === 0;
 
 //                 if (isAtTop) {
 //                     container.classList.add('top-header')
