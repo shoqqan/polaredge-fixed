@@ -1,10 +1,3 @@
-// ScrollSmoother.create({
-//     wrapper: '.smoother-wrapper',
-//     content: '.smoother-content',
-//     smooth: 1.5,
-//     effects: true
-// })
-
 const formValidate = (form) => {
     let error = 0;
     let formReq = document.querySelectorAll("._req")
@@ -24,6 +17,10 @@ const formValidate = (form) => {
         }
     })
     return error
+}
+
+function formatNumber(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
 const formAddError = (input) => {
@@ -64,15 +61,16 @@ const getPrice = async () => {
             const response = await fetch(`https://polaredgeback-production.up.railway.app/price/${document.getElementById('calculate-input').value}`)
             const data = await response.json();
             const price = document.getElementById('price')
+            const matsPrice = document.getElementById('mats-price').querySelector('.price');
             const detailsButton = document.querySelector('.btn-details');
-            const formattedPrice = data.result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            const formattedPrice = formatNumber(data.result - data.putty);
             price.innerText = `~${formattedPrice} ₸`;
+            matsPrice.innerText = `${formatNumber(data.mats)} ₸`
             detailsButton.style.display = 'block'; // Show the button
         } catch (error) {
             console.error(error);
         }
     }
-
 }
 const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
@@ -96,58 +94,116 @@ const postData = async (url = '', data = {}) => {
     return response.json();
 }
 
-let prevScrollpos = window.pageYOffset;
-window.onscroll = function () {
-    const isAtTop = window.scrollY === 0;
-    let currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-        document.getElementById("fix-head").style.top = "0";
-        document.getElementById("fix-head").style.backgroundColor = "white";
-    } else if (isAtTop) {
-        document.getElementById("fix-head").style.backgroundColor = "red";
-    }else
-    {
-        document.getElementById("fix-head").style.top = "-75px";
-    }
-    prevScrollpos = currentScrollPos;
-}
-
-// const showAnim = gsap.from('.header-edge', {
-//     yPercent: -100,
-//     paused: true,
-//     duration: 0.2
-// }).progress(1);
-
-// ScrollTrigger.create({
-//     start: "top top",
-//     end: 99999,
-//     onUpdate: (self) => {
-//         if (window.innerWidth > 768) {
-//             window.addEventListener('scroll', () => {
-//                 const container = document.querySelector('.header-edge');
-
-//                 if (isAtTop) {
-//                     container.classList.add('top-header')
-//                 }
-//             });
-
-//             const container = document.querySelector('.header-edge');
-//             if (self.direction === -1) {
-//                 showAnim.play();
-//                 container.classList.add('fixed-header');
-//             } else {
-//                 showAnim.reverse();
-//                 container.classList.remove('fixed-header');
-//                 container.classList.remove('top-header')
-//             }
-//         } else {
-//             const container = document.querySelector('.header-edge');
-//             container.classList.remove('fixed-header');
-//         }
+// document.getElementById("hot-water").addEventListener("change", (event) => {
+//     if (event.target.checked) {
+//         // document.getElementById('price').innerText = `~${parseInt(stringWithNumber.replace(/[^0-9]/g, ''), 10)+hotPrice} ₸`;
 //     }
-// });
+// })
+
+// let prevScrollpos = window.pageYOffset;
+// window.onscroll = function () {
+//     let currentScrollPos = window.pageYOffset;
+//     if (prevScrollpos > currentScrollPos) {
+//         document.getElementById("fix-head").style.top = "0";
+//         document.getElementById("fix-head").style.backgroundColor = "white";
+//     } else {
+//         document.getElementById("fix-head").style.top = "-75px";
+//     }
+//     prevScrollpos = currentScrollPos;
+// }
+
+const showAnim = gsap.from('.header-edge', {
+    yPercent: -100,
+    paused: true,
+    duration: 0.2
+}).progress(1);
+
+ScrollTrigger.create({
+    start: "top top",
+    end: 99999,
+    onUpdate: (self) => {
+        if (window.innerWidth > 768) {
+            const isAtTop = window.scrollY === 0;
+            window.addEventListener('scroll', () => {
+                const container = document.querySelector('.header-edge');
+
+                if (isAtTop) {
+                    container.classList.add('top-header')
+                }
+            });
+
+            const container = document.querySelector('.header-edge');
+            if (self.direction === -1) {
+                showAnim.play();
+                container.classList.add('fixed-header');
+            } else {
+                showAnim.reverse();
+                container.classList.remove('fixed-header');
+                container.classList.remove('top-header')
+            }
+        } else {
+            const container = document.querySelector('.header-edge');
+            container.classList.remove('fixed-header');
+        }
+    }
+});
+let hotWaterCheckboxFirstClicked = false;
+let puttyCheckboxFirstClicked = false;
+let firstPrice = parseInt(document.getElementById('price').innerText.replace(/[^0-9]/g, ''), 10)
+let firstMachine = parseInt(document.getElementById('ice-machine-price').innerText.replace(/[^0-9]/g, ''), 10)
+// Получите все элементы с классом "price" внутри элемента с id="details-list"
+const priceElements = document.querySelectorAll('#details-list .price');
+
+// Инициализируйте переменную для суммы
+let totalSum = 0;
+
+// Пройдитесь по каждому элементу с классом "price" и добавьте его значение к сумме
 
 
+document.getElementById('hot-water').addEventListener('change', (event) => {
+    if (!hotWaterCheckboxFirstClicked && !puttyCheckboxFirstClicked) {
+        const priceElements = document.querySelectorAll('li .price');
+        priceElements.forEach((priceElement) => {
+            const priceValue = parseInt(priceElement.innerText.replace(/[^0-9]/g, ''), 10);
+            if (!isNaN(priceValue)) {
+                totalSum += priceValue;
+            }
+        });
+    }
+    if (event.target.checked) {
+        console.log(totalSum)
+        let newValue = Math.round((totalSum - firstMachine) + firstMachine * 1.45);
+        document.getElementById('price').innerText = `~${formatNumber(newValue)} ₸`;
+        hotWaterCheckboxFirstClicked = true;
+    } else {
+        if (hotWaterCheckboxFirstClicked) {
+            document.getElementById('price').innerText = `~${formatNumber(totalSum)} ₸`;
+        }
+    }
+})
+
+document.getElementById('putty').addEventListener('change', (event) => {
+    if (!hotWaterCheckboxFirstClicked && !puttyCheckboxFirstClicked) {
+        const priceElements = document.querySelectorAll('li .price');
+        priceElements.forEach((priceElement) => {
+            const priceValue = parseInt(priceElement.innerText.replace(/[^0-9]/g, ''), 10);
+            if (!isNaN(priceValue)) {
+                totalSum += priceValue;
+            }
+        });
+    }
+    if (event.target.checked) {
+        console.log(firstPrice)
+        let newValue = firstPrice + 400000;
+        console.log(newValue)
+        document.getElementById('price').innerText = `~${formatNumber(newValue)} ₸`;
+        puttyCheckboxFirstClicked = true;
+    } else {
+        if (puttyCheckboxFirstClicked) {
+            document.getElementById('price').innerText = `~${formatNumber(totalSum)} ₸`;
+        }
+    }
+})
 const blocks = document?.querySelectorAll(".card-item");
 const panelsContainer = document.querySelector(".card-swipe");
 

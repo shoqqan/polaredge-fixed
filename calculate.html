@@ -96,7 +96,7 @@
                 <button class="lang">
                     EN
                 </button>
-                
+
             </div>
             <button class="nav-btn" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -152,24 +152,38 @@
                     </div>
                     <div class="more-details">
                         <h3>Детали стоимости</h3>
-                        <ul class="details-list">
-                            <li>
-                                <span class="title">Капилярного мата</span>
-                                <span class="price">1 731 494 ₸</span>
-                            </li>
-                            <li>
-                                <span class="title">Холодильная машина</span>
-                                <span class="price">3 341 250 ₸</span>
-                            </li>
-                            <li>
-                                <span class="title">Расчет стоимости работ</span>
-                                <span class="price">1 023 566 ₸</span>
-                            </li>
-                            <li>
-                                <span class="title">Расходники</span>
-                                <span class="price">2 104 542 ₸</span>
-                            </li>
-                        </ul>
+                        <div class="details-container">
+                            <ul class="details-list">
+                                <li id="mats-price">
+                                    <span class="title">Капилярного мата</span>
+                                    <span class="price">1 731 494 ₸</span>
+                                </li>
+                                <li>
+                                    <span class="title">Холодильная машина</span>
+                                    <span class="price" id="ice-machine-price">3 341 250 ₸</span>
+                                </li>
+                                <li>
+                                    <span class="title">Расчет стоимости работ</span>
+                                    <span class="price">1 023 566 ₸</span>
+                                </li>
+                                <li>
+                                    <span class="title">Расходники</span>
+                                    <span class="price">2 104 542 ₸</span>
+                                </li>
+                            </ul>
+                            <ul class="details-list">
+                                <li>
+                                    <input type="checkbox" id="hot-water"/>
+                                    <label for="hot-water">+ Горячая вода</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="putty"/>
+                                    <label for="putty">+ Левкас (шпатлевка)</label>
+                                <li>
+
+
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
