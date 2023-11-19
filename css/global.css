@@ -785,11 +785,18 @@ input.error::placeholder{
     flex-wrap: wrap;
   }
   
+  .title-hero {
+    font-size: 64px;
+    font-weight: 600;
+    color: var(--text-accent);
+  }
+  
   .title-main {
     font-size: 40px;
     font-weight: 500;
     color: var(--text-accent);
   }
+
   .title-h3 {
     font-size: 24px;
     font-weight: 500;
@@ -805,6 +812,9 @@ input.error::placeholder{
     }
     .title-main {
         font-size: 24px;
+    }
+    .title-hero {
+      font-size: 40px;
     }
     p {
         font-size: 16px;

@@ -115,7 +115,7 @@
     </div>
 </header>
 
-<section class="section-pd calculate">
+<section class="section-pd catalog">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -132,59 +132,80 @@
                 </a>
             </div>
 
-            <div class="col-md-8">
-                <h1 class="title-hero mb-3 mt-5">Рассчитайте Ваш дом</h1>
-                <div class="calculate-card">
-                    <div class="card-inner">
-                        <div class="form">
-                            <div class="group-form mb-4">
-                                <input class="group-control" id="calculate-input" placeholder="0 кв м2"
-                                       oninput="validateNumberInput(this)"/>
-                                <!-- <span class="hint"></span> -->
-                            </div>
-                            <button class="btn btn-pry" id="calculate-btn">Рассчитать</button>
-                        </div>
-                        <div class="result">
-                            <p>Вот столько это будет стоить</p>
-                            <h3 id="price">~0 ₸</h3>
-                            <button class="btn-details" style="display: none">Раскрыть детали</button>
-                        </div>
-                    </div>
-                    <div class="more-details">
-                        <h3>Детали стоимости</h3>
-                        <div class="details-container">
-                            <ul class="details-list">
-                                <li id="mats-price">
-                                    <span class="title">Капилярного мата</span>
-                                    <span class="price">1 731 494 ₸</span>
-                                </li>
-                                <li>
-                                    <span class="title">Холодильная машина</span>
-                                    <span class="price" id="ice-machine-price">3 341 250 ₸</span>
-                                </li>
-                                <li>
-                                    <span class="title">Расчет стоимости работ</span>
-                                    <span class="price">1 023 566 ₸</span>
-                                </li>
-                                <li>
-                                    <span class="title">Расходники</span>
-                                    <span class="price">2 104 542 ₸</span>
-                                </li>
-                            </ul>
-                            <ul class="details-list">
-                                <li>
-                                    <input type="checkbox" id="hot-water"/>
-                                    <label for="hot-water">+ Горячая вода</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="putty"/>
-                                    <label for="putty">+ Левкас (шпатлевка)</label>
-                                <li>
+            <div class="col-md-12">
+                <h1 class="title-hero mb-3 mt-5">Каталог</h1>
+                <div class="catalog-grid">
 
-
-                            </ul>
+                    <a href="catalog-inner.html" class="catalog-card">
+                        <div class="top">
+                            <h2>Капилярные маты</h2>
+                            <img src="img/catalog/image-1.png" />
                         </div>
-                    </div>
+                        <div class="bottom">
+                            <p>
+                                Капиллярная трубка холодильника (капиллярный трубопровод) — важнейшая деталь в устройстве холодильного агрегата. Она представляет собой прибор,
+                            </p>
+                            <span class="link-to">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 6C7 5.44772 7.44772 5 8 5L18 5C18.2652 5 18.5196 5.10536 18.7071 5.29289C18.8946 5.48043 19 5.73478 19 6L19 16C19 16.5523 18.5523 17 18 17C17.4477 17 17 16.5523 17 16L17 8.41421L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L15.5858 7L8 7C7.44772 7 7 6.55228 7 6Z" fill="currentColor"/>
+                                </svg>                                    
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="catalog-card">
+                        <div class="top">
+                            <h2>Тепловой насос</h2>
+                            <img src="img/catalog/image-2.png" />
+                        </div>
+                        <div class="bottom">
+                            <p>
+                                Капиллярная трубка холодильника (капиллярный трубопровод) — важнейшая деталь в устройстве холодильного агрегата. Она представляет собой прибор,
+                            </p>
+                            <span class="link-to">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 6C7 5.44772 7.44772 5 8 5L18 5C18.2652 5 18.5196 5.10536 18.7071 5.29289C18.8946 5.48043 19 5.73478 19 6L19 16C19 16.5523 18.5523 17 18 17C17.4477 17 17 16.5523 17 16L17 8.41421L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L15.5858 7L8 7C7.44772 7 7 6.55228 7 6Z" fill="currentColor"/>
+                                </svg>                                    
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="catalog-card">
+                        <div class="top">
+                            <h2>Капилярные маты</h2>
+                            <img src="img/catalog/image-1.png" />
+                        </div>
+                        <div class="bottom">
+                            <p>
+                                Капиллярная трубка холодильника (капиллярный трубопровод) — важнейшая деталь в устройстве холодильного агрегата. Она представляет собой прибор,
+                            </p>
+                            <span class="link-to">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 6C7 5.44772 7.44772 5 8 5L18 5C18.2652 5 18.5196 5.10536 18.7071 5.29289C18.8946 5.48043 19 5.73478 19 6L19 16C19 16.5523 18.5523 17 18 17C17.4477 17 17 16.5523 17 16L17 8.41421L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L15.5858 7L8 7C7.44772 7 7 6.55228 7 6Z" fill="currentColor"/>
+                                </svg>                                    
+                            </span>
+                        </div>
+                    </a>
+
+                    
+
+                    <a href="#" class="catalog-card">
+                        <div class="top">
+                            <h2>Тепловой насос</h2>
+                            <img src="img/catalog/image-2.png" />
+                        </div>
+                        <div class="bottom">
+                            <p>
+                                Капиллярная трубка холодильника (капиллярный трубопровод) — важнейшая деталь в устройстве холодильного агрегата. Она представляет собой прибор,
+                            </p>
+                            <span class="link-to">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 6C7 5.44772 7.44772 5 8 5L18 5C18.2652 5 18.5196 5.10536 18.7071 5.29289C18.8946 5.48043 19 5.73478 19 6L19 16C19 16.5523 18.5523 17 18 17C17.4477 17 17 16.5523 17 16L17 8.41421L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L15.5858 7L8 7C7.44772 7 7 6.55228 7 6Z" fill="currentColor"/>
+                                </svg>                                    
+                            </span>
+                        </div>
+                    </a>
+
                 </div>
             </div>
 
