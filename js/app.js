@@ -1,3 +1,16 @@
+const generatePDF = () => {
+    let htmlElement = document.getElementById('calculatorWrapper')
+    html2canvas(htmlElement).then(canvas => {
+        // Создаем экземпляр jsPDF
+        let pdf = new jsPDF();
+
+        // Преобразуем canvas в изображение и добавляем его в PDF
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 15, 15);
+
+        // Сохраняем PDF-файл
+        pdf.save("generated_pdf_with_html.pdf");
+    });
+}
 const formValidate = (form) => {
     let error = 0;
     let formReq = document.querySelectorAll("._req")
@@ -97,24 +110,6 @@ const postData = async (url = '', data = {}) => {
     return response.json();
 }
 
-// document.getElementById("hot-water").addEventListener("change", (event) => {
-//     if (event.target.checked) {
-//         // document.getElementById('price').innerText = `~${parseInt(stringWithNumber.replace(/[^0-9]/g, ''), 10)+hotPrice} ₸`;
-//     }
-// })
-
-// let prevScrollpos = window.pageYOffset;
-// window.onscroll = function () {
-//     let currentScrollPos = window.pageYOffset;
-//     if (prevScrollpos > currentScrollPos) {
-//         document.getElementById("fix-head").style.top = "0";
-//         document.getElementById("fix-head").style.backgroundColor = "white";
-//     } else {
-//         document.getElementById("fix-head").style.top = "-75px";
-//     }
-//     prevScrollpos = currentScrollPos;
-// }
-
 const showAnim = gsap.from('.header-edge', {
     yPercent: -100,
     paused: true,
@@ -152,8 +147,8 @@ ScrollTrigger.create({
 });
 let hotWaterCheckboxChecked = false;
 let puttyCheckboxChecked = false;
-let machinePrice = parseInt(document.getElementById('ice-machine-price').innerText.replace(/[^0-9]/g, ''), 10)
-document.getElementById('hot-water').addEventListener('change', (event) => {
+let machinePrice = parseInt(document.getElementById('ice-machine-price')?.innerText.replace(/[^0-9]/g, ''), 10)
+document.getElementById('hot-water')?.addEventListener('change', (event) => {
     if (event.target.checked) {
         hotWaterCheckboxChecked = true
         if (puttyCheckboxChecked) {
@@ -171,7 +166,7 @@ document.getElementById('hot-water').addEventListener('change', (event) => {
     }
 })
 
-document.getElementById('putty').addEventListener('change', (event) => {
+document.getElementById('putty')?.addEventListener('change', (event) => {
     if (event.target.checked) {
         puttyCheckboxChecked = true;
         if (hotWaterCheckboxChecked) {
