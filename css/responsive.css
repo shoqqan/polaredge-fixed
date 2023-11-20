@@ -192,6 +192,9 @@
         margin-top: 24px;
         height: 260px;
     }
+    .what-in img, .what-in video {
+        width: 115%;
+    }
     .logo-sub {
         margin-top: 24px;
         height: 260px;

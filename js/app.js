@@ -255,8 +255,8 @@ tl.from(".slider-progress-3", {
 
 });
 
-// FAQs
 
+// FAQs JS Alim
 const accordionBtns = document.querySelectorAll(".faq-collapse");
 
 accordionBtns.forEach((accordion) => {
@@ -278,6 +278,7 @@ accordionBtns.forEach((accordion) => {
 });
 
 
+// Swiper JS Alim
 const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     loop: true,
@@ -319,11 +320,6 @@ if (document.getElementById('application_form')) {
     });
 }
 
-$(".bore-card .btn-bore").click(function () {
-    $(".bore-card .btn-bore").removeClass("active").eq($(this).index()).addClass("active");
-    $(".card-info").hide().eq($(this).index()).fadeIn()
-}).eq(0).addClass("active");
-
 $(document).ready(function () {
     $("#phone").on("input", function () {
         var currentInput = $(this).val();
@@ -351,6 +347,8 @@ document.querySelector('.btn-details')?.addEventListener('click', () => {
     document.querySelector('.btn-details').innerText = isActive ? "Скрыть детали" : "Раскрыть детали"
 })
 
+
+// Video JS Alim
 const videos = gsap.utils.toArray('video')
 
 videos?.forEach(function (video, i) {
@@ -368,3 +366,10 @@ videos?.forEach(function (video, i) {
     });
 
 })
+
+// Video JS Alim
+$(".bore-card .btn-bore").click(function () {
+    $(".bore-card .btn-bore").removeClass("active").eq($(this).index()).addClass("active");
+    $(".card-info").hide().eq($(this).index()).fadeIn()
+}).eq(0).addClass("active");
+
