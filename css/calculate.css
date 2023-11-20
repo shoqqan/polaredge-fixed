@@ -64,6 +64,7 @@
     gap: 12px;
     padding: 8px 0;
     width: 100%;
+    position: relative;
 }
 .details-list li span {
     display: block;
@@ -88,6 +89,13 @@
     justify-content: center;
     flex-direction: column;
 }
+.details-list .checkbox-group {
+    width: 100%;
+    position: absolute;
+    left: calc(100% + 24px);
+    top: 7px;
+    margin: auto;
+}
 
 @media screen and (max-width: 767px) {
     .calculate-card {
@@ -96,7 +104,7 @@
     .card-inner {
         flex-direction: column;
     }
-    .calculate-card .form, .calculate-card .form .btn, .calculate-card .result, .more-details, .details-list li .title {
+    .calculate-card .form, .calculate-card .form .btn, .calculate-card .result, .more-details, .details-list, .details-list li .title, .more-details .btn-icon {
         width: 100%;
     }
     .more-details {
@@ -115,6 +123,12 @@
     .details-list li .price {
         text-align: left;
         width: 100%;
+    }
+    .details-list .checkbox-group {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-top: 4px;
     }
 
 }

@@ -344,7 +344,7 @@ document.querySelector('.btn-details')?.addEventListener('click', () => {
 
 
 // Video JS Alim
-const videos = gsap.utils.toArray('video')
+const videos = gsap.utils.toArray('.video-main')
 
 videos?.forEach(function (video, i) {
 
