@@ -55,7 +55,7 @@ const extractBaseURL = (url) => {
 const changeURL = (url) => {
     window.location.href = window.location.href.includes("localhost") ? extractBaseURL(window.location.href) + "polaredge/" + url : "https://shoqqan.github.io/polaredge-fixed/" + url;
 }
-let firstPrice = 0;
+let firstPrice, puttyPrice = 0;
 const getPrice = async () => {
     if (document.getElementById('calculate-input').value) {
         try {
@@ -66,6 +66,7 @@ const getPrice = async () => {
             const detailsButton = document.querySelector('.btn-details');
             const formattedPrice = formatNumber(data.result - data.putty);
             firstPrice = data.result - data.putty;
+            puttyPrice = data.putty;
             price.innerText = `~${formattedPrice} ₸`;
             matsPrice.innerText = `${formatNumber(data.mats)} ₸`
             detailsButton.style.display = 'block'; // Show the button
@@ -156,15 +157,14 @@ document.getElementById('hot-water').addEventListener('change', (event) => {
     if (event.target.checked) {
         hotWaterCheckboxChecked = true
         if (puttyCheckboxChecked) {
-            document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45 + 400000))} ₸`
+            document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45 + puttyPrice))} ₸`
         } else {
             document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45))} ₸`
         }
     } else {
         hotWaterCheckboxChecked = false;
-        document.getElementById('price').innerText = `~${formatNumber(firstPrice)} ₸`
         if (puttyCheckboxChecked) {
-            document.getElementById('price').innerText = `~${formatNumber(Math.floor(firstPrice + 400000))} ₸`
+            document.getElementById('price').innerText = `~${formatNumber(Math.floor(firstPrice + puttyPrice))} ₸`
         } else {
             document.getElementById('price').innerText = `~${formatNumber(firstPrice)} ₸`
         }
@@ -177,11 +177,11 @@ document.getElementById('putty').addEventListener('change', (event) => {
         if (hotWaterCheckboxChecked) {
             document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45 + 400000))} ₸`
         } else {
-            document.getElementById('price').innerText = `~${formatNumber(Math.floor(firstPrice + 400000))} ₸`
+            document.getElementById('price').innerText = `~${formatNumber(Math.floor(firstPrice + puttyPrice))} ₸`
         }
     } else {
+        puttyCheckboxChecked = false;
         if (hotWaterCheckboxChecked) {
-            puttyCheckboxChecked = false;
             document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45))} ₸`
         } else {
             document.getElementById('price').innerText = `~${formatNumber(firstPrice)} ₸`
