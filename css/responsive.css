@@ -83,7 +83,7 @@
         border-radius: 50%;
         background-color: #33333333;
         transition: .4s;
-        transition-delay: .2;
+        transition-delay: 0.2s;
     }
     .nav-btn:hover::before {
         width: 20px;
@@ -91,6 +91,7 @@
     }
 
     .header-edge {
+        height: 4rem;
         padding: 8px 0;
         background-color: #eaeaea;
     }

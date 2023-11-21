@@ -1,13 +1,9 @@
 const generatePDF = () => {
-    let htmlElement = document.getElementById('calculatorWrapper')
+    let htmlElement = document.getElementById('forPDF')
     html2canvas(htmlElement).then(canvas => {
-        // Создаем экземпляр jsPDF
         let pdf = new jsPDF();
-
-        // Преобразуем canvas в изображение и добавляем его в PDF
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 15, 15);
-
-        // Сохраняем PDF-файл
+        pdf.text(`Price: ${document.getElementById('price').innerText} ₸`, 15, 10)
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 20, 20);
         pdf.save("generated_pdf_with_html.pdf");
     });
 }
@@ -110,41 +106,60 @@ const postData = async (url = '', data = {}) => {
     return response.json();
 }
 
-const showAnim = gsap.from('.header-edge', {
-    yPercent: -100,
-    paused: true,
-    duration: 0.2
-}).progress(1);
-
-ScrollTrigger.create({
-    start: "top top",
-    end: 99999,
-    onUpdate: (self) => {
-        if (window.innerWidth > 768) {
-            const isAtTop = window.scrollY === 0;
-            window.addEventListener('scroll', () => {
-                const container = document.querySelector('.header-edge');
-
-                if (isAtTop) {
-                    container.classList.add('top-header')
-                }
-            });
-
-            const container = document.querySelector('.header-edge');
-            if (self.direction === -1) {
-                showAnim.play();
-                container.classList.add('fixed-header');
-            } else {
-                showAnim.reverse();
-                container.classList.remove('fixed-header');
-                container.classList.remove('top-header')
-            }
-        } else {
-            const container = document.querySelector('.header-edge');
-            container.classList.remove('fixed-header');
-        }
+let lastScrollTop = 0;
+const header = document.querySelector('.header-edge');
+window.addEventListener('scroll', () => {
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        header.classList.add('header-none');
+        header.classList.remove('fixed-header');
+        header.classList.remove('top-header');
+    } else {
+        header.classList.remove('header-none');
+        header.classList.add('fixed-header');
     }
-});
+    if (scrollTop===0){
+        header.classList.remove('header-none');
+        header.classList.add('top-header')
+    }
+
+    lastScrollTop = scrollTop;
+})
+// const showAnim = gsap.from('.header-edge', {
+//     yPercent: -100,
+//     paused: true,
+//     duration: 0.2
+// }).progress(1);
+
+// ScrollTrigger.create({
+//     start: "top top",
+//     end: 99999,
+//     onUpdate: (self) => {
+//         if (window.innerWidth > 768) {
+//             const isAtTop = window.scrollY === 0;
+//             window.addEventListener('scroll', () => {
+//                 const container = document.querySelector('.header-edge');
+//
+//                 if (isAtTop) {
+//                     container.classList.add('top-header')
+//                 }
+//             });
+//
+//             const container = document.querySelector('.header-edge');
+//             if (self.direction === -1) {
+//                 showAnim.play();
+//                 container.classList.add('fixed-header');
+//             } else {
+//                 showAnim.reverse();
+//                 container.classList.remove('fixed-header');
+//                 container.classList.remove('top-header')
+//             }
+//         } else {
+//             const container = document.querySelector('.header-edge');
+//             container.classList.remove('fixed-header');
+//         }
+//     }
+// });
 let hotWaterCheckboxChecked = false;
 let puttyCheckboxChecked = false;
 let machinePrice = parseInt(document.getElementById('ice-machine-price')?.innerText.replace(/[^0-9]/g, ''), 10)
@@ -325,7 +340,6 @@ $(document).ready(function () {
 });
 
 const navigationBtn = document.querySelector('.nav-btn');
-const header = document.querySelector('.header-edge');
 const body = document.querySelector('.app');
 navigationBtn.addEventListener("click", () => {
     navigationBtn.classList.toggle('active');
