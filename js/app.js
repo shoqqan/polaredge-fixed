@@ -3,8 +3,8 @@ const generatePDF = () => {
     html2canvas(htmlElement).then(canvas => {
         let pdf = new jsPDF();
         pdf.text(`Price: ${document.getElementById('price').innerText} ₸`, 15, 10)
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 20, 20);
-        pdf.save("generated_pdf_with_html.pdf");
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 15, 15);
+        pdf.save("price.pdf");
     });
 }
 const formValidate = (form) => {
