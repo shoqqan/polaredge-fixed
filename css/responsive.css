@@ -1,4 +1,13 @@
 
+
+@media (min-width: 768px) and (max-width: 992px) {
+    
+    .catalog-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
 @media screen and (max-width: 767px) {
     /* Paddings */
     .section-pd {
@@ -142,6 +151,10 @@
     .nav-btn.active::before {
         transform: rotate(-45deg);
     }
+
+    .header-inner .nav .link.active::before {
+        content: unset;
+    }
     
     /* Video */
     .appVideos {
@@ -161,7 +174,7 @@
     .hero-block {
         height: auto;
         padding-top: 100px;
-        padding-bottom: 64px;
+        padding-bottom: 128px;
         flex-direction: column-reverse;
     }
     .hero-text h1 {
@@ -349,7 +362,67 @@
         display: none;
     }
 
+    .panel {
+        padding: 0 16px;
+    }
+    .catalog .special-tabs {
+        margin: 16px 0 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px
+    }
+    .catalog .special-tabs .tabs, .catalog .special-tabs .tabs li {
+        width: 100%;
+    }
+    .catalog .special-tabs .tabs li a {
+        flex-direction: column;
+        text-align: center;
+    }
+    .large-tabs span {
+        font-size: 14px;
+    }
+    .catalog-info h2 {
+        font-size: 20px;
+    }
+    .catalog-images {
+        margin-bottom: 24px;
+    }
+    .cat-detail .catalog-desc li {
+        flex-direction: column;
+        font-variant-numeric: lining-nums proportional-nums;
+        gap: 2px;
+        align-items: flex-start;
+        border-radius: 8px;
+        background-color: #F9FAFC;
+        padding: 8px 16px;
+    }
+    .cat-detail .other-text {
+        font-size: 14px;
+    }
+    
+    .catalog-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .card-cat {
+        padding: 16px;
+        border-radius: 24px;
+        flex-direction: column;
+    }
+    .card-cat img {
+        width: 100%;
+        border-radius: 16px;
+    }
 
+
+    
+    .catalog-card.videoHover video {
+        display: none;
+    }
+
+    .catalog-card.videoHover img {
+        display: block;
+    }
 
     /* Footer */
     .footer {

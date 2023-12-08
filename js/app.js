@@ -382,3 +382,84 @@ $(".bore-card .btn-bore").click(function () {
     $(".card-info").hide().eq($(this).index()).fadeIn()
 }).eq(0).addClass("active");
 
+
+// $(document).ready(function() {
+//   $('.tabs a').click(function(){
+//      $('.panel').hide();
+//      $('.tabs a.active').removeClass('active');
+//      $(this).addClass('active');
+//      var panel = $(this).attr('href');
+//      $(panel).fadeIn(500);
+//      return false; 
+//   });
+//      $('.tabs li:first a').click();  
+// });
+
+$('.tab-link').click( function() {
+	
+	var tabID = $(this).attr('data-tab');
+	
+	$(this).addClass('active').siblings().removeClass('active');
+	
+	$('#tab-'+tabID).addClass('active').siblings().removeClass('active');
+});
+
+
+// Video JS Alim
+const videoHover = document.querySelectorAll(".videoHover video")
+
+videoHover.forEach(video => {
+  video.addEventListener("mouseover", function () {
+    this.play()
+  })
+  
+  video.addEventListener("mouseout", function () {
+    this.pause()
+  })
+  
+  video.addEventListener("touchstart", function () {
+    this.play()
+  })
+  
+  video.addEventListener("touchend", function () {
+    this.pause()
+  })
+})
+
+
+// Select all links with hashes
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });

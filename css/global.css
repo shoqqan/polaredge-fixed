@@ -13,13 +13,12 @@
     --background-grey: #FAFAFA;
 }
 
-html{
-}
 body {
     color: var(--text-accent);
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-variant-numeric: lining-nums proportional-nums;
 }
 .app.open {
   overflow: hidden;
@@ -829,6 +828,10 @@ input.error::placeholder{
     font-weight: 600;
     color: var(--text-accent);
   }
+  .title-hero small {
+    font-size: 32px;
+  }
+  
   
   .title-main {
     font-size: 40px;
@@ -854,6 +857,9 @@ input.error::placeholder{
     }
     .title-hero {
       font-size: 40px;
+    }
+    .title-hero small {
+      font-size: 24px;
     }
     p {
         font-size: 16px;
