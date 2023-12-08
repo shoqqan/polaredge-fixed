@@ -64,7 +64,8 @@ const extractBaseURL = (url) => {
 const changeURL = (url) => {
     window.location.href = window.location.href.includes("localhost") ? extractBaseURL(window.location.href) + "polaredge/" + url : "https://shoqqan.github.io/polaredge-fixed/" + url;
 }
-let firstPrice, puttyPrice = 0;
+let firstPrice, puttyPrice, worksPrice = 0;
+
 const getPrice = async () => {
     if (document.getElementById('calculate-input').value) {
         try {
@@ -72,10 +73,13 @@ const getPrice = async () => {
             const data = await response.json();
             const price = document.getElementById('price')
             const matsPrice = document.getElementById('mats-price').querySelector('.price');
+            const workValue = document.getElementById('works-price')
             const detailsButton = document.querySelector('.btn-details');
             const formattedPrice = formatNumber(data.result - data.putty);
             firstPrice = data.result - data.putty;
             puttyPrice = data.putty;
+            worksPrice = data.works - data.putty;
+            workValue.innerText = `${formatNumber(worksPrice)} ₸`
             price.innerText = `~${formattedPrice} ₸`;
             matsPrice.innerText = `${formatNumber(data.mats)} ₸`
             detailsButton.style.display = 'block'; // Show the button
@@ -118,7 +122,7 @@ window.addEventListener('scroll', () => {
         header.classList.remove('header-none');
         header.classList.add('fixed-header');
     }
-    if (scrollTop===0){
+    if (scrollTop === 0) {
         header.classList.remove('header-none');
         header.classList.add('top-header')
     }
@@ -184,6 +188,7 @@ document.getElementById('hot-water')?.addEventListener('change', (event) => {
 document.getElementById('putty')?.addEventListener('change', (event) => {
     if (event.target.checked) {
         puttyCheckboxChecked = true;
+        document.getElementById('works-price').innerText =  `${formatNumber(Math.floor(worksPrice + puttyPrice))} ₸`
         if (hotWaterCheckboxChecked) {
             document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45 + 400000))} ₸`
         } else {
@@ -191,6 +196,7 @@ document.getElementById('putty')?.addEventListener('change', (event) => {
         }
     } else {
         puttyCheckboxChecked = false;
+        document.getElementById('works-price').innerText =  `${formatNumber(Math.floor(worksPrice))} ₸`
         if (hotWaterCheckboxChecked) {
             document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45))} ₸`
         } else {
@@ -395,13 +401,13 @@ $(".bore-card .btn-bore").click(function () {
 //      $('.tabs li:first a').click();  
 // });
 
-$('.tab-link').click( function() {
-	
-	var tabID = $(this).attr('data-tab');
-	
-	$(this).addClass('active').siblings().removeClass('active');
-	
-	$('#tab-'+tabID).addClass('active').siblings().removeClass('active');
+$('.tab-link').click(function () {
+
+    var tabID = $(this).attr('data-tab');
+
+    $(this).addClass('active').siblings().removeClass('active');
+
+    $('#tab-' + tabID).addClass('active').siblings().removeClass('active');
 });
 
 
@@ -409,57 +415,58 @@ $('.tab-link').click( function() {
 const videoHover = document.querySelectorAll(".videoHover video")
 
 videoHover.forEach(video => {
-  video.addEventListener("mouseover", function () {
-    this.play()
-  })
-  
-  video.addEventListener("mouseout", function () {
-    this.pause()
-  })
-  
-  video.addEventListener("touchstart", function () {
-    this.play()
-  })
-  
-  video.addEventListener("touchend", function () {
-    this.pause()
-  })
+    video.addEventListener("mouseover", function () {
+        this.play()
+    })
+
+    video.addEventListener("mouseout", function () {
+        this.pause()
+    })
+
+    video.addEventListener("touchstart", function () {
+        this.play()
+    })
+
+    video.addEventListener("touchend", function () {
+        this.pause()
+    })
 })
 
 
 // Select all links with hashes
 $('a[href*="#"]')
-  // Remove links that don't actually link to anything
-  .not('[href="#"]')
-  .not('[href="#0"]')
-  .click(function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-      && 
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000, function() {
-          // Callback after animation
-          // Must change focus!
-          var $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
-      }
-    }
-  });
+    // Remove links that don't actually link to anything
+    .not('[href="#"]')
+    .not('[href="#0"]')
+    .click(function (event) {
+        // On-page links
+        if (
+            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+            &&
+            location.hostname == this.hostname
+        ) {
+            // Figure out element to scroll to
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            // Does a scroll target exist?
+            if (target.length) {
+                // Only prevent default if animation is actually gonna happen
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000, function () {
+                    // Callback after animation
+                    // Must change focus!
+                    var $target = $(target);
+                    $target.focus();
+                    if ($target.is(":focus")) { // Checking if the target was focused
+                        return false;
+                    } else {
+                        $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                        $target.focus(); // Set focus again
+                    }
+                    ;
+                });
+            }
+        }
+    });
