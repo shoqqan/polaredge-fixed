@@ -884,6 +884,8 @@
 .catalog-images {
     border-radius: 24px;
     background: radial-gradient(77.95% 77.95% at 50% 37.08%, rgba(240, 241, 244, 0.00) 0%, #F0F1F4 62.24%);
+    position: relative;
+    overflow: hidden;
 }
 .catalog-images img {
     width: 100%;
@@ -944,6 +946,9 @@
     font-size: 18px;
     color: var(--text-accent);
     font-weight: 500;
+}
+.other-text a {
+    color: var(--primary-color);
 }
 .catalog-card.videoHover img {
     display: none;
@@ -1018,10 +1023,21 @@
     font-size: 16px;
     line-height: 150%;
 }
+.cat-heat {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+.cat-heat .cat-item {
+    flex: 1 0 calc(33% - 12px);
+}
 
 
 .tab-content {
     display: none;
+    margin: 0 -16px;
     opacity: 0;
     transform: translateY(15px);
     animation: fadeIn 0.5s ease 1 forwards;
