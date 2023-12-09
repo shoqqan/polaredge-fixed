@@ -509,3 +509,15 @@ $('a[href*="#"]')
             }
         }
     });
+
+    $(document).ready(function(){
+        $('.owl-heat').owlCarousel({
+            loop: true,
+            autoplay:true,
+            autoplayTimeout: 3000,
+            margin:24,
+            nav: false,
+            items: 1,
+            dots: true,
+        })
+    });

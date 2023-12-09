@@ -847,6 +847,30 @@ input.error::placeholder{
   .text-center {
     text-align: center;
   }
+.owl-heat .owl-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.owl-heat .owl-dot {
+    width: 8px;
+    height: 8px;
+    background: #F0F1F4 !important;
+    border-radius: 50%;
+    transition: .4s;
+}
+.owl-heat .owl-dot.active {
+  width: 16px;
+  border-radius: 12px;
+  transition: .4s;
+  background: #118DF0 !important;
+}
 
 @media screen and (max-width: 767px) {
     .row {
