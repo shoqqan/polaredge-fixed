@@ -279,21 +279,22 @@ blocks.forEach((block, index) => {
         },
     });
 });
+
+
 let tl = gsap.timeline({
     scrollTrigger: {
         trigger: ".how-it-work",
-        toggleActions: "restart complete reverse resume",
+        toggleActions: "restart pause resume pause",
         start: "top top",
         scrub: 1,
         pin: true,
-        end: "+=1500",
+        end: "+=1500"
 
     }
 });
 tl.to(".slider-progress-1", {
     autoAlpha: 0,
     pin: true
-
 })
 
 tl.from(".slider-progress-2", {
@@ -309,6 +310,40 @@ tl.from(".slider-progress-3", {
     y: 50,
 
 });
+
+gsap.registerPlugin(ScrollTrigger);
+
+const stickyDiv = document.querySelector('.product__sticky');
+const sections = gsap.utils.toArray('.product__sticky-section');
+
+// Создание ScrollTrigger для stickyDiv
+ScrollTrigger.create({
+  trigger: stickyDiv,
+  start: 'top top',
+  endTrigger: '.product__sticky-section-blocks',
+  end: 'bottom bottom',
+//   markers: true,
+  toggleClass: {targets: stickyDiv, className: 'enabled'},
+  scrub: true
+});
+
+// Создание ScrollTriggers для каждой секции
+sections.forEach((section, index) => {
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top center',
+    end: 'bottom center',
+    onEnter: () => setActiveSection(index),
+    onEnterBack: () => setActiveSection(index),
+    scrub: true
+  });
+});
+
+function setActiveSection(index) {
+  sections.forEach((section, i) => {
+    section.classList[i === index ? 'add' : 'remove']('active');
+  });
+}
 
 
 // FAQs JS Alim
