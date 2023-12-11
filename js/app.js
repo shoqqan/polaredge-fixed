@@ -1,13 +1,52 @@
 const generatePDF = () => {
-    let htmlElement = document.getElementById('forPDF')
-    html2canvas(htmlElement).then(canvas => {
-        let pdf = new jsPDF();
-        pdf.text(`Price: ${document.getElementById('price').innerText} ₸`, 15, 10)
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 15, 15);
-        pdf.save("price.pdf");
-    });
+    let docInfo = {
+        info: {
+            title: 'Расчет стоимости',
+            subject: 'Расчет стоимости работ',
+
+        },
+        pageSize: 'A4',
+        pageOrientation: 'landscape',
+        pageMargins: [50, 100, 50, 100],
+        header: [
+            {
+                text: `Примерный расчет стоимости работ на ${document.getElementById('calculate-input').value} м`,
+                alignment: 'center',
+                fontSize: 18,
+                bold: true,
+                margin:[0,30,10,50]
+            }
+        ],
+        content: [
+            {
+
+                table: {
+                    widths: [300, 300],
+                    headerRows: 2,
+                    body: [
+                        [{text: 'Материал', style: 'tableHeader',bold:true, alignment: 'center'}, {
+                            text: 'Цена',
+                            style: 'tableHeader',
+                            bold:true,
+                            alignment: 'center',
+                        }],
+                        ['Капилярные маты', replaceCurrencySymbol(document.getElementById('mats-price').querySelector('.price').innerText)],
+                        ['Холодильная машина', replaceCurrencySymbol(document.getElementById('ice-machine-price').innerText)],
+                        ['Расчет стоимости работ', replaceCurrencySymbol(document.getElementById('works-price').innerText)],
+                        ['Расходники', replaceCurrencySymbol(document.getElementById('mats-price').querySelector('.price').innerText)],
+                    ]
+                }
+            }
+        ]
+    }
+    pdfMake.createPdf(docInfo).download('price')
 }
-const formValidate = (form) => {
+
+function replaceCurrencySymbol(inputString) {
+    return inputString.replace(/₸/g, 'теньге');
+}
+
+const formValidate = () => {
     let error = 0;
     let formReq = document.querySelectorAll("._req")
     formReq.forEach((el) => {
@@ -188,7 +227,7 @@ document.getElementById('hot-water')?.addEventListener('change', (event) => {
 document.getElementById('putty')?.addEventListener('change', (event) => {
     if (event.target.checked) {
         puttyCheckboxChecked = true;
-        document.getElementById('works-price').innerText =  `${formatNumber(Math.floor(worksPrice + puttyPrice))} ₸`
+        document.getElementById('works-price').innerText = `${formatNumber(Math.floor(worksPrice + puttyPrice))} ₸`
         if (hotWaterCheckboxChecked) {
             document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45 + 400000))} ₸`
         } else {
@@ -196,7 +235,7 @@ document.getElementById('putty')?.addEventListener('change', (event) => {
         }
     } else {
         puttyCheckboxChecked = false;
-        document.getElementById('works-price').innerText =  `${formatNumber(Math.floor(worksPrice))} ₸`
+        document.getElementById('works-price').innerText = `${formatNumber(Math.floor(worksPrice))} ₸`
         if (hotWaterCheckboxChecked) {
             document.getElementById('price').innerText = `~${formatNumber(Math.floor((firstPrice - machinePrice) + machinePrice * 1.45))} ₸`
         } else {
@@ -366,7 +405,7 @@ document.querySelector('.btn-details')?.addEventListener('click', () => {
 // Video JS Alim
 const videos = gsap.utils.toArray('.video-main')
 
-videos?.forEach(function (video, i) {
+videos?.forEach(function (video) {
 
     ScrollTrigger.create({
         trigger: ".appVideos",

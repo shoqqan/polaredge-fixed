@@ -22,6 +22,8 @@
     <script src="./libs/gsap/ScrollTrigger.min.js" defer></script>
     <script src="./libs/gsap/ScrollSmoother.min.js" defer></script>
     <script src="./libs/swiper/swiper-bundle.min.js" defer></script>
+    <script src="./libs/pdfmake/pdfmake.js" defer></script>
+    <script src="./libs/pdfmake/vfs_fonts.js" defer></script>
     <script src="js/app.js" defer></script>
 
     <!-- Fonts -->
@@ -143,7 +145,7 @@
                 </a>
             </div>
 
-            <div class="col-md-8" id="forPDF">
+            <div class="col-md-8">
                 <h1 class="title-hero mb-3 mt-5" id="calculatorWrapper">Рассчитайте Ваш&nbsp;дом</h1>
                 <div class="calculate-card">
                     <div class="card-inner">
@@ -189,22 +191,10 @@
                                 </li>
                                 <li>
                                     <span class="title">Расходники</span>
-                                    <span class="price">2 104 542 ₸</span>
+                                    <span class="price" id="consumables-price">2 104 542 ₸</span>
                                 </li>
 
                             </ul>
-                            <!--                            <ul class="details-list">-->
-                            <!--                                <li>-->
-                            <!--                                    <input type="checkbox" id="hot-water"/>-->
-                            <!--                                    <label for="hot-water">+ Горячая вода</label>-->
-                            <!--                                </li>-->
-                            <!--                                <li>-->
-                            <!--                                    <input type="checkbox" id="putty"/>-->
-                            <!--                                    <label for="putty">+ Левкас (шпатлевка)</label>-->
-                            <!--                                <li>-->
-
-
-                            <!--                            </ul>-->
                         </div>
                         <button class="btn-icon btn btn-sndry mt-3" onclick="generatePDF()">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -339,8 +329,6 @@
         </div>
     </div>
 </footer>
-
-
 </body>
 
 </html>
