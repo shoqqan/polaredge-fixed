@@ -1026,12 +1026,13 @@
 .cat-heat {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 24px;
     flex-wrap: wrap;
     margin-top: 16px;
 }
 .cat-heat .cat-item {
-    flex: 1 0 calc(33% - 12px);
+    flex: 0 0 calc(30% - 12px);
 }
 
 
@@ -1098,7 +1099,8 @@
     opacity: 0;
     text-align: left;
     transition: opacity .3s cubic-bezier(.25,.46,.45,.94);
-    width: calc((min(100vw,calc(100vw - 80px)) - 280px)/4 + 80px);
+    /* width: calc((min(100vw,calc(100vw - 80px)) - 280px)/4 + 80px); */
+    width: 50%;
 }
 .product__sticky-section.active .product__sticky-section-content, .product__sticky-section.active:before, .product__sticky-section.active .container img {
     opacity: 1;
