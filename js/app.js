@@ -2,10 +2,13 @@ const generatePDF = () => {
     document.getElementById('download-btn').style.display = 'none'
     document.getElementById('hide-btn').style.display = 'none'
     document.getElementById('calculate-btn').style.display = 'none'
-    document.getElementById('calculatorWrapper').innerText = `Расчет суммы на ${document.getElementById('calculate-input').value}м²`
-    document.getElementById('calculate-input').style.display = 'none'
-    document.querySelector('.btn-details').style.display = 'none'
+    document.getElementById('calculatorWrapper').style.fontSize = '40px'
+    document.getElementById('calculatorWrapper').innerText = `Расчет суммы\n${document.getElementById('calculate-input').value}м² = ${document.getElementById('price').innerText}`
+    document.querySelector('.card-inner').style.display = 'none'
 
+    if (document.getElementById('ice-machine-title').classList.contains('hide')) {
+        document.getElementById('ice-machine-li').style.display = 'none'
+    }
     const element = document.getElementById('forPDF')
     const opt = {
         html2canvas: {dpi: 96, scale: 1, scrollX: 0, scrollY: 0, backgroundColor: '#FFF'},
@@ -17,16 +20,17 @@ const generatePDF = () => {
         .from(element)
         .save()
     setTimeout(() => {
+        document.querySelector('.card-inner').style.display = 'block'
         document.getElementById('download-btn').style.display = 'block'
         document.getElementById('hide-btn').style.display = 'block'
         document.getElementById('calculate-btn').style.display = 'block'
-
+        document.getElementById('ice-machine-li').style.display = 'block'
         document.getElementById('calculatorWrapper').innerText = `Расчитайте Ваш дом`
-        document.getElementById('calculate-input').style.display = 'block'
-        document.querySelector('.btn-details').style.display = 'block'
 
-    }, 200)
-
+    }, 100)
+    setTimeout(() => {
+        location.reload()
+    }, 1000)
 }
 
 function replaceCurrencySymbol(inputString) {
