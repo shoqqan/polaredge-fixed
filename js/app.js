@@ -1,3 +1,4 @@
+
 const generatePDF = () => {
     let docInfo = {
         info: {
@@ -10,24 +11,29 @@ const generatePDF = () => {
         pageMargins: [50, 100, 50, 100],
         header: [
             {
-                text: `Примерный расчет стоимости работ на ${document.getElementById('calculate-input').value} м`,
-                alignment: 'center',
-                fontSize: 18,
+                text: `Расчет суммы`,
+                fontSize: 30,
                 bold: true,
-                margin:[0,30,10,50]
+                margin: [60, 30, 10, 50]
             }
         ],
         content: [
             {
-
+                text: `${document.getElementById('calculate-input').value}м² = ${replaceCurrencySymbol(document.getElementById('price').innerText)}`,
+                fontSize: 30,
+                bold: true,
+                margin: [0, 0, 10, 50]
+            },
+            {
                 table: {
                     widths: [300, 300],
                     headerRows: 2,
+                    margin: [0, 0, 0, 0],
                     body: [
-                        [{text: 'Материал', style: 'tableHeader',bold:true, alignment: 'center'}, {
+                        [{text: 'Материал', style: 'tableHeader', bold: true, alignment: 'center'}, {
                             text: 'Цена',
                             style: 'tableHeader',
-                            bold:true,
+                            bold: true,
                             alignment: 'center',
                         }],
                         ['Капилярные маты', replaceCurrencySymbol(document.getElementById('mats-price').querySelector('.price').innerText)],
@@ -43,7 +49,7 @@ const generatePDF = () => {
 }
 
 function replaceCurrencySymbol(inputString) {
-    return inputString.replace(/₸/g, 'теньге');
+    return inputString.replace(/₸/g, 'тенге');
 }
 
 const formValidate = () => {
@@ -318,31 +324,31 @@ const sections = gsap.utils.toArray('.product__sticky-section');
 
 // Создание ScrollTrigger для stickyDiv
 ScrollTrigger.create({
-  trigger: stickyDiv,
-  start: 'top top',
-  endTrigger: '.product__sticky-section-blocks',
-  end: 'bottom bottom',
+    trigger: stickyDiv,
+    start: 'top top',
+    endTrigger: '.product__sticky-section-blocks',
+    end: 'bottom bottom',
 //   markers: true,
-  toggleClass: {targets: stickyDiv, className: 'enabled'},
-  scrub: true
+    toggleClass: {targets: stickyDiv, className: 'enabled'},
+    scrub: true
 });
 
 // Создание ScrollTriggers для каждой секции
 sections.forEach((section, index) => {
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top center',
-    end: 'bottom center',
-    onEnter: () => setActiveSection(index),
-    onEnterBack: () => setActiveSection(index),
-    scrub: true
-  });
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top center',
+        end: 'bottom center',
+        onEnter: () => setActiveSection(index),
+        onEnterBack: () => setActiveSection(index),
+        scrub: true
+    });
 });
 
 function setActiveSection(index) {
-  sections.forEach((section, i) => {
-    section.classList[i === index ? 'add' : 'remove']('active');
-  });
+    sections.forEach((section, i) => {
+        section.classList[i === index ? 'add' : 'remove']('active');
+    });
 }
 
 
@@ -430,12 +436,28 @@ document.getElementById('calculate-btn')?.addEventListener('click', () => {
     getPrice();
 })
 
+
 document.querySelector('.btn-details')?.addEventListener('click', () => {
     document.querySelector('.more-details').classList.toggle('active')
     const isActive = document.querySelector('.more-details').classList.contains('active');
     document.querySelector('.btn-details').innerText = isActive ? "Скрыть детали" : "Раскрыть детали"
 })
-
+document.getElementById('hide-btn')?.addEventListener('click', () => {
+    document.getElementById('ice-machine-price')?.classList.toggle('hide')
+    document.getElementById('ice-machine-title')?.classList.toggle('hide')
+    document.getElementById('hot-water-group')?.classList.toggle('hide')
+    const isActive = document.getElementById('ice-machine-title').classList.contains('hide');
+    document.getElementById('hide-btn').innerText = isActive ? "Показать" : "Убрать";
+    document.getElementById('hot-water').disabled = isActive
+    if (isActive) {
+        document.getElementById('price').innerText = `~${formatNumber(firstPrice - machinePrice)} ₸`
+        firstPrice -= machinePrice
+    } else {
+        document.getElementById('putty').checked = false
+        document.getElementById('hot-water').checked = false
+        getPrice()
+    }
+})
 
 // Video JS Alim
 const videos = gsap.utils.toArray('.video-main')
@@ -545,14 +567,14 @@ $('a[href*="#"]')
         }
     });
 
-    $(document).ready(function(){
-        $('.owl-heat').owlCarousel({
-            loop: true,
-            autoplay:true,
-            autoplayTimeout: 3000,
-            margin:24,
-            nav: false,
-            items: 1,
-            dots: true,
-        })
-    });
+$(document).ready(function () {
+    $('.owl-heat').owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        margin: 24,
+        nav: false,
+        items: 1,
+        dots: true,
+    })
+});

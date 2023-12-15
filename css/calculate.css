@@ -2,33 +2,40 @@
     padding-top: 128px;
     background: linear-gradient(180deg, #F0F1F4 0%, rgba(246, 245, 245, 0.50) 46.73%, #FFF 100%);
 }
+
 .calculate-card {
     border-radius: 24px;
     background: var(--color-white);
     padding: 40px 24px;
 }
+
 .card-inner {
     display: flex;
     gap: 64px;
     width: 100%;
 }
+
 .calculate-card .form {
     width: calc(100% - 300px);
 }
+
 .calculate-card .result {
     width: 300px;
     flex: none;
 }
+
 .calculate-card .result p {
     font-size: 16px;
     line-height: 24px;
 }
+
 .calculate-card .result h3 {
     font-size: 40px;
     font-weight: 400;
     margin-top: 8px;
     font-variant-numeric: lining-nums proportional-nums;
 }
+
 .btn-details {
     color: #118DF0;
     font-size: 16px;
@@ -45,19 +52,22 @@
     height: 0;
 }
 
-.more-details.active{
+.more-details.active {
     height: max-content;
     opacity: 1;
 }
+
 .more-details h3 {
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 16px;
 }
-.details-container{
+
+.details-container {
     display: flex;
     column-gap: 2rem;
 }
+
 .details-list li {
     display: flex;
     align-items: center;
@@ -66,9 +76,11 @@
     width: 100%;
     position: relative;
 }
+
 .details-list li span {
     display: block;
 }
+
 .details-list li .title {
     color: var(--text-add);
     font-size: 16px;
@@ -76,6 +88,7 @@
     line-height: normal;
     width: calc(100% - 126px)
 }
+
 .details-list li .price {
     color: var(--text-accent);
     text-align: right;
@@ -84,11 +97,13 @@
     font-weight: 600;
     width: 120px;
 }
-.details-list:nth-child(2){
+
+.details-list:nth-child(2) {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
+
 .details-list .checkbox-group {
     width: 100%;
     position: absolute;
@@ -97,20 +112,55 @@
     margin: auto;
 }
 
+#mats-price {
+    padding-bottom: 0;
+}
+
+#price-for-mat {
+    padding-top: 0;
+    justify-content: end;
+    font-size: 14px;
+    color: var(--text-accent)
+}
+
+#hide-btn {
+    position: absolute;
+    left: calc(200%);
+    bottom: 0.5rem
+}
+
+
+
+.hide {
+    opacity: 50%;
+}
+
+@media screen and (max-width: 1400px) {
+    #hide-btn {
+        bottom: 0;
+        top: 2rem;
+        left: calc(100% + 20%);
+    }
+}
+
 @media screen and (max-width: 767px) {
     .calculate-card {
         padding: 24px 16px;
     }
+
     .card-inner {
         flex-direction: column;
     }
+
     .calculate-card .form, .calculate-card .form .btn, .calculate-card .result, .more-details, .details-list, .details-list li .title, .more-details .btn-icon {
         width: 100%;
     }
+
     .more-details {
         border-top: 1px solid var(--text-add);
         padding-top: 32px;
     }
+
     .details-list li {
         flex-direction: column;
         align-items: flex-start;
@@ -120,15 +170,28 @@
         background-color: #F9FAFC;
         padding: 8px 16px;
     }
+
+    #price-for-mat {
+        margin-top: 0;
+    }
+
     .details-list li .price {
         text-align: left;
         width: 100%;
     }
+
     .details-list .checkbox-group {
         position: relative;
         left: 0;
         top: 0;
         margin-top: 4px;
+    }
+
+    #hide-btn {
+        position: relative;
+        bottom: 0;
+        top: 0;
+        left: 0;
     }
 
 }

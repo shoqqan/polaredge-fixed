@@ -172,15 +172,7 @@
                                     <span class="title">Капилярного мата</span>
                                     <span class="price">1 731 494 ₸</span>
                                 </li>
-                                <li>
-                                    <span class="title">Холодильная машина</span>
-                                    <span class="price" id="ice-machine-price">3 341 250 ₸</span>
-
-                                    <div class="checkbox-group">
-                                        <input id="hot-water" class="checkbox" type="checkbox">
-                                        <label for="hot-water" class="checkbox-label">+ Горячая вода</label>
-                                    </div>
-                                </li>
+                                <li id="price-for-mat"><span>11 543 ₸/м²</span></li>
                                 <li>
                                     <span class="title">Расчет стоимости работ</span>
                                     <span class="price" id="works-price">1 023 566 ₸</span>
@@ -193,7 +185,16 @@
                                     <span class="title">Расходники</span>
                                     <span class="price" id="consumables-price">2 104 542 ₸</span>
                                 </li>
+                                <li>
+                                    <span class="title" id="ice-machine-title">Тепловой насос</span>
+                                    <span class="price" id="ice-machine-price">3 341 250 ₸</span>
 
+                                    <div class="checkbox-group" id="hot-water-group">
+                                        <input id="hot-water" class="checkbox" type="checkbox">
+                                        <label for="hot-water" class="checkbox-label">+ Горячая вода</label>
+                                    </div>
+                                    <button class="btn-details" id="hide-btn">Убрать</button>
+                                </li>
                             </ul>
                         </div>
                         <button class="btn-icon btn btn-sndry mt-3" onclick="generatePDF()">
@@ -204,7 +205,7 @@
                                 <path d="M2 15C2.55228 15 3 15.4477 3 16V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V16C21 15.4477 21.4477 15 22 15C22.5523 15 23 15.4477 23 16V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V16C1 15.4477 1.44772 15 2 15Z"
                                       fill="#333333"/>
                             </svg>
-                            Скачать документ
+                            Скачать рассчеты
                         </button>
                     </div>
                 </div>
