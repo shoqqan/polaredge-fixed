@@ -1,51 +1,32 @@
-
 const generatePDF = () => {
-    let docInfo = {
-        info: {
-            title: 'Расчет стоимости',
-            subject: 'Расчет стоимости работ',
+    document.getElementById('download-btn').style.display = 'none'
+    document.getElementById('hide-btn').style.display = 'none'
+    document.getElementById('calculate-btn').style.display = 'none'
+    document.getElementById('calculatorWrapper').innerText = `Расчет суммы на ${document.getElementById('calculate-input').value}м²`
+    document.getElementById('calculate-input').style.display = 'none'
+    document.querySelector('.btn-details').style.display = 'none'
 
-        },
-        pageSize: 'A4',
-        pageOrientation: 'landscape',
-        pageMargins: [50, 100, 50, 100],
-        header: [
-            {
-                text: `Расчет суммы`,
-                fontSize: 30,
-                bold: true,
-                margin: [60, 30, 10, 50]
-            }
-        ],
-        content: [
-            {
-                text: `${document.getElementById('calculate-input').value}м² = ${replaceCurrencySymbol(document.getElementById('price').innerText)}`,
-                fontSize: 30,
-                bold: true,
-                margin: [0, 0, 10, 50]
-            },
-            {
-                table: {
-                    widths: [300, 300],
-                    headerRows: 2,
-                    margin: [0, 0, 0, 0],
-                    body: [
-                        [{text: 'Материал', style: 'tableHeader', bold: true, alignment: 'center'}, {
-                            text: 'Цена',
-                            style: 'tableHeader',
-                            bold: true,
-                            alignment: 'center',
-                        }],
-                        ['Капилярные маты', replaceCurrencySymbol(document.getElementById('mats-price').querySelector('.price').innerText)],
-                        ['Холодильная машина', replaceCurrencySymbol(document.getElementById('ice-machine-price').innerText)],
-                        ['Расчет стоимости работ', replaceCurrencySymbol(document.getElementById('works-price').innerText)],
-                        ['Расходники', replaceCurrencySymbol(document.getElementById('mats-price').querySelector('.price').innerText)],
-                    ]
-                }
-            }
-        ]
+    const element = document.getElementById('forPDF')
+    const opt = {
+        html2canvas: {dpi: 96, scale: 1, scrollX: 0, scrollY: 0, backgroundColor: '#FFF'},
+        jsPDF: {unit: 'in', format: 'a4', orientation: 'p'}
+
     }
-    pdfMake.createPdf(docInfo).download('price')
+    html2pdf()
+        .set(opt)
+        .from(element)
+        .save()
+    setTimeout(() => {
+        document.getElementById('download-btn').style.display = 'block'
+        document.getElementById('hide-btn').style.display = 'block'
+        document.getElementById('calculate-btn').style.display = 'block'
+
+        document.getElementById('calculatorWrapper').innerText = `Расчитайте Ваш дом`
+        document.getElementById('calculate-input').style.display = 'block'
+        document.querySelector('.btn-details').style.display = 'block'
+
+    }, 200)
+
 }
 
 function replaceCurrencySymbol(inputString) {
